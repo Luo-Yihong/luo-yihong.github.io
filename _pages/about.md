@@ -24,6 +24,8 @@ News
 Publications
 ===
 
+(<em><sup>*</sup> denotes co-first authors</em>)
+
 <strong><font style="color:#1f57b8">You Only Sample Once: Taming One-Step Text-to-Image Synthesis by Self-Cooperative Diffusion GANs</font></strong><br />
 **Yihong Luo**, Xiaolong Chen, Xinghua Qu, Tianyang Hu, Jing Tang <br />
 ICLR 2025 <br />
@@ -59,7 +61,6 @@ Siya Qiu, **Yihong Luo**, Qiong Luo, Jing Tang <br />
 Ocean Engineering (JCR Q1) <br />
 [[Paper]](https://scholar.google.com/citations?view_op=view_citation&hl=en&user=9VfuwdsAAAAJ&citation_for_view=9VfuwdsAAAAJ:Tyk-4Ss8FVUC) <br />
 
-<em><sup>*</sup> denotes co-first authors</em>
 
 
 Education
