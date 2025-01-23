@@ -67,20 +67,13 @@ Ocean Engineering (JCR Q1) <br />
 
 Education
 ===
-* 2020 --- 2023: **Master** in Pattern Recognition and Intelligent Systems, Sun Yat-sen University (Shenzhen)
-* 2016 --- 2020: **B.Sc.** in Computer Science and Technology, Sun Yat-sen University (Panyu)
-
-
-Honors and Awards
-===
-* National First Prize, Contemporary Undergraduate Mathematical Contest in Modeling (CUMCM), China
-* First Prize Scholarship, Sun Yat-sen University
+* 2022 --- 2025/12 (expected): **Ph.D.** in Data Science and Analytics, Hong Kong University of Science and Technology
+* 2016 --- 2020: **B.Sc.** in Information Management and Information System, 	South China University of Technology
 
 Experience
 ===
-* <div>NLP Research Intern, Huawei Noah's Ark</div> 
-* <div>Recommender System Intern, ByteDance-Data-Douyin</div> 
-* <div>NLP Research Intern, DMAI</div> 
+* <div>Diffusion Distillation Research Intern, Huawei Noah's Ark</div> 
+* <div>Research Assistant, Hong Kong University of Science and Technology</div> 
 
 ---
 <script>
