@@ -58,7 +58,7 @@ IJCAI 2023 <br />
 [[Paper]](https://scholar.google.com/citations?view_op=view_citation&hl=en&user=9VfuwdsAAAAJ&citation_for_view=9VfuwdsAAAAJ:UeHWp8X0CEIC) <br />
 
 <strong><font style="color:#1f57b8">SteadySeg: Improving Maritime Trajectory Staging by Steadiness Recognition</font></strong><br />
-Shixiang Qiu, <strong>Yihong Luo</strong>, Qiong Luo, Jing Tang <br />
+Siya Qiu, <strong>Yihong Luo</strong>, Qiong Luo, Jing Tang <br />
 Ocean Engineering (JCR Q1) <br />
 [[Paper]](https://scholar.google.com/citations?view_op=view_citation&hl=en&user=9VfuwdsAAAAJ&citation_for_view=9VfuwdsAAAAJ:Tyk-4Ss8FVUC) <br />
 
