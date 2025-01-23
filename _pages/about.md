@@ -11,7 +11,7 @@ redirect_from:
 
 Short Bio
 ===
-I’m Yihong Luo, currently pursuing a PhD with a keen focus on Deep Genearative Models and Graph Neural Networks. Under the guidance and collaboration of esteemed advisors: [Jing Tang](https://scholar.google.com/citations?hl=zh-CN&user=0S4cpyoAAAAJ). I focus on the following topics:
+I’m Yihong Luo, currently pursuing a PhD with a keen focus on Deep Genearative Models and Graph Neural Networks in HKUST. Under the guidance and collaboration of esteemed advisors: [Jing Tang](https://scholar.google.com/citations?hl=zh-CN&user=0S4cpyoAAAAJ). I focus on the following topics:
 * Few-Step Text-to-Image/Video Diffusion Models
 * Energy-Based Models
 * Graph Neural Networks
@@ -38,17 +38,17 @@ ECCV 2024 <br />
 [[Paper]](https://scholar.google.com/citations?view_op=view_citation&hl=en&user=9VfuwdsAAAAJ&citation_for_view=9VfuwdsAAAAJ:2osOgNQ5qMEC) <br />
 
 <strong><font style="color:#1f57b8">Fast Graph Sharpness-Aware Minimization for Enhancing and Accelerating Few-Shot Node Classification</font></strong><br />
-**Yihong Luo**, Yuhan Chen, Siya Qiu, Yiwei Wang, Chen Zhang, Yan Zhou, Xiaochun Cao, Jing Tang <br />
+**Yihong Luo**<sup>*</sup>, Yuhan Chen<sup>*</sup>, Siya Qiu, Yiwei Wang, Chen Zhang, Yan Zhou, Xiaochun Cao, Jing Tang <br />
 NeurIPS 2024 <br />
 [[Paper]](https://scholar.google.com/citations?view_op=view_citation&hl=en&user=9VfuwdsAAAAJ&citation_for_view=9VfuwdsAAAAJ:zYLM7Y9cAGgC) <br />
 
 <strong><font style="color:#1f57b8">TO-FLOW: Efficient Continuous Normalizing Flows with Temporal Optimization adjoint with Moving Speed</font></strong><br />
-Shian Du*, **Yihong Luo**, Wei Chen*, Jian Xu, Delu Zeng <br />
+Shian Du<sup>*</sup>, **Yihong Luo**<sup>*</sup>, Wei Chen<sup>*</sup>, Jian Xu, Delu Zeng <br />
 CVPR 2022 <br />
 [[Paper]](https://scholar.google.com/citations?view_op=view_citation&hl=en&user=9VfuwdsAAAAJ&citation_for_view=9VfuwdsAAAAJ:qjMakFHDy7sC) <br />
 
 <strong><font style="color:#1f57b8">LSGNN: Towards General Graph Neural Network in Node Classification by Local Similarity</font></strong><br />
-Yuhan Chen*, **Yihong Luo**, Jing Tang, Liang Yang, Siya Qiu, Chuan Wang, Xiaochun Cao <br />
+Yuhan Chen<sup>*</sup>, **Yihong Luo**<sup>*</sup>, Jing Tang, Liang Yang, Siya Qiu, Chuan Wang, Xiaochun Cao <br />
 IJCAI 2023 <br />
 [[Paper]](https://scholar.google.com/citations?view_op=view_citation&hl=en&user=9VfuwdsAAAAJ&citation_for_view=9VfuwdsAAAAJ:UeHWp8X0CEIC) <br />
 
