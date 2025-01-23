@@ -16,19 +16,17 @@ Short Bio
 
 <!-- Research Interests
 === -->
-I’m Yihong Luo, currently pursuing a PhD with a keen focus on Reasoning with Large Language Models (LLMs). Under the guidance and collaboration of esteemed advisors: [Xiaodan Liang](https://scholar.google.com/citations?user=voxznZAAAAAJ&hl=zh-CN&oi=ao), [Zhijiang Guo](https://scholar.google.com/citations?user=8b-u3icAAAAJ&hl=zh-CN&oi=ao), [Yiwei Wang](https://scholar.google.com/citations?user=Sh9QvBkAAAAJ&hl=zh-CN&oi=ao), and [Jing Tang](https://scholar.google.com/citations?hl=zh-CN&user=0S4cpyoAAAAJ). I focus on the following topics:
-* Automatic Data Synthesis
-* Long Chain Reasoning
-* Self-Evolution Framework
-* Learning Efficiency (performance improvement / data usage)
+I’m Yihong Luo, currently pursuing a PhD with a keen focus on Deep Genearative Models and Graph Neural Networks. Under the guidance and collaboration of esteemed advisors: [Jing Tang](https://scholar.google.com/citations?hl=zh-CN&user=0S4cpyoAAAAJ). I focus on the following topics:
+* Few-Step Text-to-Image/Video Diffusion Models
+* Energy-Based Models
+* Graph Neural Networks
   
 > If you’re interested in collaborating or exploring potential research opportunities, please don’t hesitate to reach out (带带哥们). 
 
 
 News
 ===
-- **<font style = "color:#FF8000">[9/2024]</font>** One paper accepted to ***Findings of EMNLP 2024***.
-- **<font style = "color:#FF8000">[5/2024]</font>** *Serve as the challenge lead organizer of [Automated Optimization Problem-Solving with Code](https://www.codabench.org/competitions/2438/) in [AI for Math Workshop and Challenges](https://sites.google.com/view/ai4mathworkshopicml2024) at [ICML 2024](https://icml.cc/Conferences/2024).*
+- **<font style = "color:#FF8000">[01/2025]</font>** Two papers accepted to ***ICLR 2025***.
 
 
 Preprints
