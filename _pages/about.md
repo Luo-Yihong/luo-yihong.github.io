@@ -33,34 +33,32 @@ Publications
 ===
 
 <strong><font style = "color:#1f57b8">You Only Sample Once: Taming One-Step Text-to-Image Synthesis by Self-Cooperative Diffusion GANs</font></strong><br />
-<strong>Y Luo</strong>, X Chen, X Qu, T Hu, J Tang <br />
-12th International Conference on Learning Representations, 2025. (ICLR 2025) <br />
+<strong>Yihong Luo</strong>, Xiaolong Chen, Xinghua Qu, Tianyang Hu, Jing Tang <br />
+ICLR 2025 <br />
 [[Paper]](https://scholar.google.com/citations?view_op=view_citation&hl=en&user=9VfuwdsAAAAJ&citation_for_view=9VfuwdsAAAAJ:IjCSPb-OGe4C) <br />
 
 <strong><font style = "color:#1f57b8">Energy-Calibrated VAE with Test Time Free Lunch</font></strong><br />
-<strong>Y Luo</strong>, S Qiu, X Tao, Y Cai, J Tang <br />
-European Conference on Computer Vision, 2024. (ECCV 2024) <br />
+<strong>Yihong Luo</strong>, Siya Qiu, Xingjian Tao, Yujun Cai, Jing Tang <br />
+ECCV 2024 <br />
 [[Paper]](https://scholar.google.com/citations?view_op=view_citation&hl=en&user=9VfuwdsAAAAJ&citation_for_view=9VfuwdsAAAAJ:2osOgNQ5qMEC) <br />
 
 <strong><font style = "color:#1f57b8">Fast Graph Sharpness-Aware Minimization for Enhancing and Accelerating Few-Shot Node Classification</font></strong><br />
-<strong>Y Luo</strong>, Y Chen, S Qiu, Y Wang, C Zhang, Y Zhou, X Cao, J Tang <br />
-Conference on Neural Information Processing Systems, 2024. (NeurIPS 2024) <br />
+<strong>Yihong Luo</strong>, Yuhan Chen, Siya Qiu, Yiwei Wang, Chen Zhang, Yan Zhou, Xiaochun Cao, Jing Tang <br />
+NeurIPS 2024 <br />
 [[Paper]](https://scholar.google.com/citations?view_op=view_citation&hl=en&user=9VfuwdsAAAAJ&citation_for_view=9VfuwdsAAAAJ:zYLM7Y9cAGgC) <br />
 
 <strong><font style = "color:#1f57b8">TO-FLOW: Efficient Continuous Normalizing Flows with Temporal Optimization adjoint with Moving Speed</font></strong><br />
-<strong>S Du*</strong>, <strong>Y Luo*</strong>, <strong>W Chen*</strong>, J Xu, D Zeng <br />
-IEEE/CVF Conference on Computer Vision and Pattern Recognition, 2022. (CVPR 2022, pp. 12570-12580) <br />
+<strong>Shian Du*</strong>, <strong>Yihong Luo*</strong>, <strong>Wei Chen*</strong>, Jian Xu, Delu Zeng <br />
+CVPR 2022 <br />
 [[Paper]](https://scholar.google.com/citations?view_op=view_citation&hl=en&user=9VfuwdsAAAAJ&citation_for_view=9VfuwdsAAAAJ:qjMakFHDy7sC) <br />
 
-
 <strong><font style = "color:#1f57b8">LSGNN: Towards General Graph Neural Network in Node Classification by Local Similarity</font></strong><br />
-<strong>Y Chen*</strong>, <strong>Y Luo*</strong>, J Tang, L Yang, S Qiu, C Wang, X Cao <br />
-International Joint Conference on Artificial Intelligence, 2023. (IJCAI 2023) <br />
+<strong>Yuhan Chen*</strong>, <strong>Yihong Luo*</strong>, Jing Tang, Liang Yang, Siya Qiu, Chuan Wang, Xiaochun Cao <br />
+IJCAI 2023 <br />
 [[Paper]](https://scholar.google.com/citations?view_op=view_citation&hl=en&user=9VfuwdsAAAAJ&citation_for_view=9VfuwdsAAAAJ:UeHWp8X0CEIC) <br /> 
 
-
 <strong><font style = "color:#1f57b8">SteadySeg: Improving Maritime Trajectory Staging by Steadiness Recognition</font></strong><br />
-S Qiu, <strong>Y Luo</strong>, Q Luo, J Tang <br />
+Shixiang Qiu, <strong>Yihong Luo</strong>, Qiong Luo, Jing Tang <br />
 Ocean Engineering (JCR Q1). <br />
 [[Paper]](https://scholar.google.com/citations?view_op=view_citation&hl=en&user=9VfuwdsAAAAJ&citation_for_view=9VfuwdsAAAAJ:Tyk-4Ss8FVUC) <br />
 
