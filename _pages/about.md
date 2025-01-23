@@ -11,10 +11,7 @@ redirect_from:
 
 Short Bio
 ===
-I’m Yihong Luo, currently pursuing a PhD with a keen focus on Deep Genearative Models and Graph Neural Networks in HKUST. Under the guidance and collaboration of esteemed advisors: [Jing Tang](https://scholar.google.com/citations?hl=zh-CN&user=0S4cpyoAAAAJ). I focus on the following topics:
-* Few-Step Text-to-Image/Video Diffusion Models
-* Energy-Based Models
-* Graph Neural Networks
+I am a final year PhD student in Hong Kong University of Science and Technology supervised by [Jing Tang](https://scholar.google.com/citations?hl=zh-CN&user=0S4cpyoAAAAJ). My research interests are developing **Efficient Geneartive Models**, and building **Few-Step Text-to-Image/Video Diffusion Models** for high-quliaty and real-time generation. I am also interested in **Graph Neural Networks**.
   
 > If you’re interested in collaborating or exploring potential research opportunities, please don’t hesitate to reach out (带带哥们). 
 
@@ -57,7 +54,7 @@ Siya Qiu, **Yihong Luo**, Qiong Luo, Jing Tang <br />
 Ocean Engineering (JCR Q1) <br />
 [[Paper]](https://scholar.google.com/citations?view_op=view_citation&hl=en&user=9VfuwdsAAAAJ&citation_for_view=9VfuwdsAAAAJ:Tyk-4Ss8FVUC) <br />
 
-<em>* denotes co-first authors</em>
+<em><sup>*</sup> denotes co-first authors</em>
 
 
 Education
