@@ -11,11 +11,6 @@ redirect_from:
 
 Short Bio
 ===
-<!-- I obtained my Master's degree at the [HCP Lab](http://www.sysu-hcp.net/home/) and bachelor's degree in SYSU, where I was fortunately advised by [Prof. Xiaodan Liang](https://scholar.google.com/citations?user=voxznZAAAAAJ&hl=zh-CN) to conduct research in NLP. -->
-
-
-<!-- Research Interests
-=== -->
 I’m Yihong Luo, currently pursuing a PhD with a keen focus on Deep Genearative Models and Graph Neural Networks. Under the guidance and collaboration of esteemed advisors: [Jing Tang](https://scholar.google.com/citations?hl=zh-CN&user=0S4cpyoAAAAJ). I focus on the following topics:
 * Few-Step Text-to-Image/Video Diffusion Models
 * Energy-Based Models
