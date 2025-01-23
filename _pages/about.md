@@ -29,49 +29,40 @@ News
 - **<font style = "color:#FF8000">[01/2025]</font>** Two papers accepted to ***ICLR 2025***.
 
 
-Preprints
+Publications
 ===
-<strong><font style = "color:#1f57b8">OptiBench Meets ReSocratic: Measure and Improve LLMs for Optimization Modeling</font></strong><br />
-<strong>Yihong Luo</strong>, Yiwei Wang, Yinya Huang, Zhijiang Guo, Wei Shi, Xiongwei Han, Liang Feng, Linqi Song, Xiaodan Liang, Jing Tang<br />
-[[Paper]](https://arxiv.org/abs/2407.09887v3) [[Code]](https://github.com/yihongluo/ReSocratic) <br /> 
+
+<strong><font style = "color:#1f57b8">You Only Sample Once: Taming One-Step Text-to-Image Synthesis by Self-Cooperative Diffusion GANs</font></strong><br />
+<strong>Y Luo</strong>, X Chen, X Qu, T Hu, J Tang <br />
+12th International Conference on Learning Representations, 2025. (ICLR 2025) <br />
+[[Paper]](https://scholar.google.com/citations?view_op=view_citation&hl=en&user=9VfuwdsAAAAJ&citation_for_view=9VfuwdsAAAAJ:IjCSPb-OGe4C) <br />
+
+<strong><font style = "color:#1f57b8">Energy-Calibrated VAE with Test Time Free Lunch</font></strong><br />
+<strong>Y Luo</strong>, S Qiu, X Tao, Y Cai, J Tang <br />
+European Conference on Computer Vision, 2024. (ECCV 2024) <br />
+[[Paper]](https://scholar.google.com/citations?view_op=view_citation&hl=en&user=9VfuwdsAAAAJ&citation_for_view=9VfuwdsAAAAJ:2osOgNQ5qMEC) <br />
+
+<strong><font style = "color:#1f57b8">Fast Graph Sharpness-Aware Minimization for Enhancing and Accelerating Few-Shot Node Classification</font></strong><br />
+<strong>Y Luo</strong>, Y Chen, S Qiu, Y Wang, C Zhang, Y Zhou, X Cao, J Tang <br />
+Conference on Neural Information Processing Systems, 2024. (NeurIPS 2024) <br />
+[[Paper]](https://scholar.google.com/citations?view_op=view_citation&hl=en&user=9VfuwdsAAAAJ&citation_for_view=9VfuwdsAAAAJ:zYLM7Y9cAGgC) <br />
+
+<strong><font style = "color:#1f57b8">TO-FLOW: Efficient Continuous Normalizing Flows with Temporal Optimization adjoint with Moving Speed</font></strong><br />
+<strong>S Du*</strong>, <strong>Y Luo*</strong>, <strong>W Chen*</strong>, J Xu, D Zeng <br />
+IEEE/CVF Conference on Computer Vision and Pattern Recognition, 2022. (CVPR 2022, pp. 12570-12580) <br />
+[[Paper]](https://scholar.google.com/citations?view_op=view_citation&hl=en&user=9VfuwdsAAAAJ&citation_for_view=9VfuwdsAAAAJ:qjMakFHDy7sC) <br />
 
 
-Selected Publication 
-===
-<strong><font style = "color:#1f57b8">AlignedCoT: Prompting Large Language Models via Native-Speaking Demonstrations</font></strong><br />
-<strong>Yihong Luo</strong>, Yinya Huang, Jing Xiong, Liang Feng, Xiaodan Liang, Yiwei Wang, Jing Tang <br />
-The 2024 Conference on Empirical Methods in Natural Language Processing. (Findings of EMNLP 2024) <br />
-[[Paper]](https://aclanthology.org/2024.findings-emnlp.163/) [[Code]](https://github.com/yihongluo/AlignedCoT) <br /> 
+<strong><font style = "color:#1f57b8">LSGNN: Towards General Graph Neural Network in Node Classification by Local Similarity</font></strong><br />
+<strong>Y Chen*</strong>, <strong>Y Luo*</strong>, J Tang, L Yang, S Qiu, C Wang, X Cao <br />
+International Joint Conference on Artificial Intelligence, 2023. (IJCAI 2023) <br />
+[[Paper]](https://scholar.google.com/citations?view_op=view_citation&hl=en&user=9VfuwdsAAAAJ&citation_for_view=9VfuwdsAAAAJ:UeHWp8X0CEIC) <br /> 
 
-<strong><font style = "color:#1f57b8">LogicSolver: Towards Interpretable Math Word Problem Solving with Logical Prompt-enhanced Learning</font></strong><br />
-<strong>Yihong Luo<sup>*</sup></strong>, Jinghui Qin<sup>*</sup>, Jiaqi Chen, Liang Lin, Xiaodan Liang<br />
-The 2022 Conference on Empirical Methods in Natural Language Processing. (Findings of EMNLP 2022) <br />
-[[Paper]](https://anthology.aclweb.org/2022.findings-emnlp.1/) [[Code]](https://github.com/yihongluo/InterMWP)<br />
 
-<strong><font style = "color:#1f57b8">Unbiased Math Word Problems Benchmark for Mitigating Solving Bias</font></strong><br />
-<strong>Yihong Luo</strong>, Jinghui Qin, Jiaqi Chen, Xiaodan Liang<br />
-Annual Conference of the North American Chapter of the Association for Computational Linguistics, 2022. (Findings of NAACL 2022)<br />
-[[Paper]](https://aclanthology.org/2022.findings-naacl.104/) [[Code]](https://github.com/yihongluo/UnbiasedMWP) <br />
-
-<strong><font style = "color:#1f57b8">CLOMO: Counterfactual Logical Modification with Large Language Models</font></strong><br />
-Yinya Huang, Ruixin Hong, Hongming Zhang, Wei Shao, <strong>Yihong Luo</strong>, Dong Yu, Changshui Zhang, Xiaodan Liang, Linqi Song <br />
-Proceedings of the 62nd Annual Meeting of the Association for Computational Linguistics. (ACL 2024) <br />
-[[Paper]](https://arxiv.org/abs/2311.17438) <br />
-
-<strong><font style = "color:#1f57b8">DQ-LoRe: Dual Queries with Low Rank Approximation Re-ranking for In-Context Learning</font></strong><br />
-Jing Xiong, Zixuan Li, Chuanyang Zheng, Zhijiang Guo, Yichun Yin, Enze Xie, <strong>Yihong Luo</strong>, Qingxing Cao, Haiming Wang, Xiongwei Han, Jing Tang, Chengming Li, Xiaodan Liang <br />
-12th International Conference on Learning Representations, 2024. (ICLR 2024)<br />
-[[Paper]](https://arxiv.org/abs/2310.02954) <br />
-
-<strong><font style = "color:#1f57b8">ATG: Benchmarking Automated Theorem Generation for Generative Language Models</font></strong><br />
-Xiaohan Lin, Qingxing Cao, Yinya Huang, **Yihong Luo**, Zhengying Liu, Zhenguo Li, Xiaodan Liang <br />
-Annual Conference of the North American Chapter of the Association for Computational Linguistics, 2024. (Findings of NAACL 2024)<br />
-[[Paper]](https://openreview.net/forum?id=H0RzzhAxTv&referrer=%5BAuthor%20Console%5D(%2Fgroup%3Fid%3Daclweb.org%2FNAACL%2F2024%2FConference%2FAuthors%23your-submissions)) <br />
-
-<strong><font style = "color:#1f57b8">Template-based Contrastive Distillation Pre-training for Math Word Problem Solving</font></strong><br />
-Jinghui Qin*, <strong>Yihong Luo*</strong>, Jiaqi Chen, Xiaodan Liang and Liang Lin<br />
-IEEE Transactions on Neural Networks and Learning Systems, 2023. (TNNLS) <br />
-[[Paper]](https://ieeexplore.ieee.org/document/10113691) <br />
+<strong><font style = "color:#1f57b8">SteadySeg: Improving Maritime Trajectory Staging by Steadiness Recognition</font></strong><br />
+S Qiu, <strong>Y Luo</strong>, Q Luo, J Tang <br />
+Ocean Engineering (JCR Q1). <br />
+[[Paper]](https://scholar.google.com/citations?view_op=view_citation&hl=en&user=9VfuwdsAAAAJ&citation_for_view=9VfuwdsAAAAJ:Tyk-4Ss8FVUC) <br />
 
 (* denotes co-first authors) <br />
 
