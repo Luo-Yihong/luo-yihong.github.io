@@ -10,13 +10,13 @@
 
 # Site Settings
 locale                   : "en-US"
-title                    : "Zhicheng YANG"
+title                    : "Yihong Luo"
 title_separator          : "-"
-name                     : &name "Zhicheng YANG"
+name                     : &name "Yihong Luo"
 description              : &description "personal description"
-url                      : https://yangzhch6.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
+url                      : https://yihongluo.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
-repository               : "yangzhch6/yangzhch6.github.io"
+repository               : "yihongluo/yihongluo.github.io"
 teaser                   :  # filename of teaser fallback teaser image placed in /images/, .e.g. "500x300.png"
 breadcrumbs              : false # true, false (default)
 words_per_minute         : 160
@@ -83,15 +83,15 @@ analytics:
 
 # Site Author
 author:
-  name             : "Zhicheng YANG"
-  avatar           : "yangzhch6.png"
+  name             : "Yihong Luo"
+  avatar           : "yihongluo.png"
   bio              : "Reasoning with LMs & Math AI"
   location         : "Shenzhen, China"
   # employer         : "HKUST"
   #pubmed           : "https://www.ncbi.nlm.nih.gov/pubmed/?term=john+snow"
   googlescholar    : "https://scholar.google.com/citations?hl=zh-CN&user=ZvXicO8AAAAJ"
   # zhihu            : "https://www.zhihu.com/people/jinxiaolong-91"
-  email            : "yangzhch6@gmail.com"
+  email            : "yihongluo@gmail.com"
   researchgate     :  # example: "https://www.researchgate.net/profile/yourprofile"
   uri              :  
   bitbucket        :
@@ -100,7 +100,7 @@ author:
   flickr           :
   facebook         :
   foursquare       :
-  github           : "yangzhch6"
+  github           : "yihongluo"
   google_plus      :
   keybase          :
   instagram        :

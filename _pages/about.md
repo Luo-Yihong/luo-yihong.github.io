@@ -16,7 +16,7 @@ Short Bio
 
 <!-- Research Interests
 === -->
-I’m Zhicheng YANG, currently pursuing a PhD with a keen focus on Reasoning with Large Language Models (LLMs). Under the guidance and collaboration of esteemed advisors: [Xiaodan Liang](https://scholar.google.com/citations?user=voxznZAAAAAJ&hl=zh-CN&oi=ao), [Zhijiang Guo](https://scholar.google.com/citations?user=8b-u3icAAAAJ&hl=zh-CN&oi=ao), [Yiwei Wang](https://scholar.google.com/citations?user=Sh9QvBkAAAAJ&hl=zh-CN&oi=ao), and [Jing Tang](https://scholar.google.com/citations?hl=zh-CN&user=0S4cpyoAAAAJ). I focus on the following topics:
+I’m Yihong Luo, currently pursuing a PhD with a keen focus on Reasoning with Large Language Models (LLMs). Under the guidance and collaboration of esteemed advisors: [Xiaodan Liang](https://scholar.google.com/citations?user=voxznZAAAAAJ&hl=zh-CN&oi=ao), [Zhijiang Guo](https://scholar.google.com/citations?user=8b-u3icAAAAJ&hl=zh-CN&oi=ao), [Yiwei Wang](https://scholar.google.com/citations?user=Sh9QvBkAAAAJ&hl=zh-CN&oi=ao), and [Jing Tang](https://scholar.google.com/citations?hl=zh-CN&user=0S4cpyoAAAAJ). I focus on the following topics:
 * Automatic Data Synthesis
 * Long Chain Reasoning
 * Self-Evolution Framework
@@ -34,44 +34,44 @@ News
 Preprints
 ===
 <strong><font style = "color:#1f57b8">OptiBench Meets ReSocratic: Measure and Improve LLMs for Optimization Modeling</font></strong><br />
-<strong>Zhicheng Yang</strong>, Yiwei Wang, Yinya Huang, Zhijiang Guo, Wei Shi, Xiongwei Han, Liang Feng, Linqi Song, Xiaodan Liang, Jing Tang<br />
-[[Paper]](https://arxiv.org/abs/2407.09887v3) [[Code]](https://github.com/yangzhch6/ReSocratic) <br /> 
+<strong>Yihong Luo</strong>, Yiwei Wang, Yinya Huang, Zhijiang Guo, Wei Shi, Xiongwei Han, Liang Feng, Linqi Song, Xiaodan Liang, Jing Tang<br />
+[[Paper]](https://arxiv.org/abs/2407.09887v3) [[Code]](https://github.com/yihongluo/ReSocratic) <br /> 
 
 
 Selected Publication 
 ===
 <strong><font style = "color:#1f57b8">AlignedCoT: Prompting Large Language Models via Native-Speaking Demonstrations</font></strong><br />
-<strong>Zhicheng Yang</strong>, Yinya Huang, Jing Xiong, Liang Feng, Xiaodan Liang, Yiwei Wang, Jing Tang <br />
+<strong>Yihong Luo</strong>, Yinya Huang, Jing Xiong, Liang Feng, Xiaodan Liang, Yiwei Wang, Jing Tang <br />
 The 2024 Conference on Empirical Methods in Natural Language Processing. (Findings of EMNLP 2024) <br />
-[[Paper]](https://aclanthology.org/2024.findings-emnlp.163/) [[Code]](https://github.com/yangzhch6/AlignedCoT) <br /> 
+[[Paper]](https://aclanthology.org/2024.findings-emnlp.163/) [[Code]](https://github.com/yihongluo/AlignedCoT) <br /> 
 
 <strong><font style = "color:#1f57b8">LogicSolver: Towards Interpretable Math Word Problem Solving with Logical Prompt-enhanced Learning</font></strong><br />
-<strong>Zhicheng Yang<sup>*</sup></strong>, Jinghui Qin<sup>*</sup>, Jiaqi Chen, Liang Lin, Xiaodan Liang<br />
+<strong>Yihong Luo<sup>*</sup></strong>, Jinghui Qin<sup>*</sup>, Jiaqi Chen, Liang Lin, Xiaodan Liang<br />
 The 2022 Conference on Empirical Methods in Natural Language Processing. (Findings of EMNLP 2022) <br />
-[[Paper]](https://anthology.aclweb.org/2022.findings-emnlp.1/) [[Code]](https://github.com/yangzhch6/InterMWP)<br />
+[[Paper]](https://anthology.aclweb.org/2022.findings-emnlp.1/) [[Code]](https://github.com/yihongluo/InterMWP)<br />
 
 <strong><font style = "color:#1f57b8">Unbiased Math Word Problems Benchmark for Mitigating Solving Bias</font></strong><br />
-<strong>Zhicheng Yang</strong>, Jinghui Qin, Jiaqi Chen, Xiaodan Liang<br />
+<strong>Yihong Luo</strong>, Jinghui Qin, Jiaqi Chen, Xiaodan Liang<br />
 Annual Conference of the North American Chapter of the Association for Computational Linguistics, 2022. (Findings of NAACL 2022)<br />
-[[Paper]](https://aclanthology.org/2022.findings-naacl.104/) [[Code]](https://github.com/yangzhch6/UnbiasedMWP) <br />
+[[Paper]](https://aclanthology.org/2022.findings-naacl.104/) [[Code]](https://github.com/yihongluo/UnbiasedMWP) <br />
 
 <strong><font style = "color:#1f57b8">CLOMO: Counterfactual Logical Modification with Large Language Models</font></strong><br />
-Yinya Huang, Ruixin Hong, Hongming Zhang, Wei Shao, <strong>Zhicheng Yang</strong>, Dong Yu, Changshui Zhang, Xiaodan Liang, Linqi Song <br />
+Yinya Huang, Ruixin Hong, Hongming Zhang, Wei Shao, <strong>Yihong Luo</strong>, Dong Yu, Changshui Zhang, Xiaodan Liang, Linqi Song <br />
 Proceedings of the 62nd Annual Meeting of the Association for Computational Linguistics. (ACL 2024) <br />
 [[Paper]](https://arxiv.org/abs/2311.17438) <br />
 
 <strong><font style = "color:#1f57b8">DQ-LoRe: Dual Queries with Low Rank Approximation Re-ranking for In-Context Learning</font></strong><br />
-Jing Xiong, Zixuan Li, Chuanyang Zheng, Zhijiang Guo, Yichun Yin, Enze Xie, <strong>Zhicheng Yang</strong>, Qingxing Cao, Haiming Wang, Xiongwei Han, Jing Tang, Chengming Li, Xiaodan Liang <br />
+Jing Xiong, Zixuan Li, Chuanyang Zheng, Zhijiang Guo, Yichun Yin, Enze Xie, <strong>Yihong Luo</strong>, Qingxing Cao, Haiming Wang, Xiongwei Han, Jing Tang, Chengming Li, Xiaodan Liang <br />
 12th International Conference on Learning Representations, 2024. (ICLR 2024)<br />
 [[Paper]](https://arxiv.org/abs/2310.02954) <br />
 
 <strong><font style = "color:#1f57b8">ATG: Benchmarking Automated Theorem Generation for Generative Language Models</font></strong><br />
-Xiaohan Lin, Qingxing Cao, Yinya Huang, **Zhicheng Yang**, Zhengying Liu, Zhenguo Li, Xiaodan Liang <br />
+Xiaohan Lin, Qingxing Cao, Yinya Huang, **Yihong Luo**, Zhengying Liu, Zhenguo Li, Xiaodan Liang <br />
 Annual Conference of the North American Chapter of the Association for Computational Linguistics, 2024. (Findings of NAACL 2024)<br />
 [[Paper]](https://openreview.net/forum?id=H0RzzhAxTv&referrer=%5BAuthor%20Console%5D(%2Fgroup%3Fid%3Daclweb.org%2FNAACL%2F2024%2FConference%2FAuthors%23your-submissions)) <br />
 
 <strong><font style = "color:#1f57b8">Template-based Contrastive Distillation Pre-training for Math Word Problem Solving</font></strong><br />
-Jinghui Qin*, <strong>Zhicheng Yang*</strong>, Jiaqi Chen, Xiaodan Liang and Liang Lin<br />
+Jinghui Qin*, <strong>Yihong Luo*</strong>, Jiaqi Chen, Xiaodan Liang and Liang Lin<br />
 IEEE Transactions on Neural Networks and Learning Systems, 2023. (TNNLS) <br />
 [[Paper]](https://ieeexplore.ieee.org/document/10113691) <br />
 
