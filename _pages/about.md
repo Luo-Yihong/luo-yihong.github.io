@@ -13,7 +13,7 @@ Short Bio
 ===
 I am a final year PhD student at [Hong Kong University of Science and Technology](https://hkust.edu.hk/), supervised by Prof. [Jing Tang](https://scholar.google.com/citations?hl=zh-CN&user=0S4cpyoAAAAJ). My research interests are developing **Efficient Generative Models**, and building **Few-Step Text-to-Image/Video Diffusion Models** for high-quality and real-time generation. I am also interested in **Graph Neural Networks**.
   
-> If you’re interested in collaborating or exploring potential research opportunities, please don’t hesitate to reach out (带带哥们). 
+> If you're interested in collaborating or exploring potential research opportunities, please don't hesitate to reach out (带带哥们). 
 
 
 News
@@ -70,7 +70,7 @@ Education
 
 Experience
 ===
-* <div>Diffusion Distillation Research Intern, Huawei Noah's Ark</div> 
+* <div>Diffusion Distillation Research Intern, Huawei Noah's Ark Lab</div> 
 * <div>Research Assistant, Hong Kong University of Science and Technology</div> 
 
 ---
