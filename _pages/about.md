@@ -18,7 +18,7 @@ I am a final year PhD student at [Hong Kong University of Science and Technology
 
 News
 ===
-- **<font style = "color:#FF8000">[01/2025]</font>** Two papers accepted to ***ICLR 2025***.
+- **<font style = "color:#FF8000">[01/2025]</font>** Two first/co-first author papers accepted to ***ICLR 2025***.
 
 
 Publications
