@@ -12,6 +12,8 @@ redirect_from:
 Short Bio
 ===
 I am a final year PhD student at [Hong Kong University of Science and Technology](https://hkust.edu.hk/), supervised by Prof. [Jing Tang](https://scholar.google.com/citations?hl=zh-CN&user=0S4cpyoAAAAJ). My research interests are developing **Efficient Generative Models**, and building **Few-Step Text-to-Image/Video Diffusion Models** for high-quality and real-time generation. I am also interested in **Graph Neural Networks**.
+
+Academic Service: reviewer for ICML, ICLR, NeurIPS, CVPR, ICCV, etc.
   
 > If you're interested in collaborating or exploring potential research opportunities, please don't hesitate to reach out (带带哥们). 
 
@@ -34,7 +36,7 @@ ICLR 2025 <br />
 <strong><font style="color:#1f57b8">Decoupled Graph Energy-based Model for Node Out-of-Distribution Detection on Heterophilic Graphs</font></strong><br />
 Yuhan Chen<sup>*</sup>, **Yihong Luo**<sup>*</sup>, Yifan Song, Pengwen Dai, Jing Tang, and Xiaochun Cao <br />
 ICLR 2025 <br />
-[[Paper]](https://scholar.google.com/citations?view_op=view_citation&hl=en&user=9VfuwdsAAAAJ&citation_for_view=9VfuwdsAAAAJ:IjCSPb-OGe4C) <br />
+[[Paper]](https://scholar.google.com/citations?view_op=view_citation&hl=en&user=9VfuwdsAAAAJ&citation_for_view=9VfuwdsAAAAJ:Y0pCki6q_DkC) <br />
 
 <strong><font style="color:#1f57b8">Energy-Calibrated VAE with Test Time Free Lunch</font></strong><br />
 **Yihong Luo**, Siya Qiu, Xingjian Tao, Yujun Cai, Jing Tang <br />
