@@ -20,7 +20,7 @@ Academic Service: reviewer for ICML, ICLR, NeurIPS, CVPR, ICCV, etc.
 
 News
 ===
-- **<font style = "color:#FF8000">[03/2025]</font>** We release <a href="https://tdm-t2x.github.io/">TDM</a>, unifying the trajectory distillation and distribution. TDM can distill pre-trained DMs to a few-step generator with better performance with extremely low cost. In particular, TDM distills PixArt to a 4-step genrator with **2 A800 hours and outperforms teacher regarding real user preference**.
+- **<font style = "color:#FF8000">[03/2025]</font>** We release <a href="https://tdm-t2x.github.io/">TDM</a>, unifying the trajectory distillation and distribution. TDM can distill pre-trained DMs to a few-step generator with better performance with extremely low cost. In particular, TDM distills PixArt to a 4-step generator with **2 A800 hours and outperforms teacher regarding real user preference**.
 - **<font style = "color:#FF8000">[03/2025]</font>** We release <a href="https://arxiv.org/abs/2503.06652">JDM</a>, a method can add additional control *unkown to teacher* to one-step student. Moreover, JDM decouples the condition learning and fidelity learning, enabling improved usage of classifier-free guidance (CFG) and seamless integration of **human feedback learning** (HFL).
 - **<font style = "color:#FF8000">[01/2025]</font>** Two first/co-first author papers accepted to ***ICLR 2025***.
 
