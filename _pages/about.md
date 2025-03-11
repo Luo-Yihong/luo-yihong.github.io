@@ -20,6 +20,20 @@ News
 ===
 - **<font style = "color:#FF8000">[01/2025]</font>** Two first/co-first author papers accepted to ***ICLR 2025***.
 
+Preprints
+===
+<strong><font style="color:#1f57b8">Learning Few-Step Diffusion Models by Trajectory Distribution Matching
+</font></strong><br />
+**Yihong Luo**, Tianyang Hu, Jiacheng Sun, Yujun Cai, Jing Tang <br />
+Preprint <br />
+[[Paper]](https://arxiv.org/abs/2503.06674) <br />
+
+<strong><font style="color:#1f57b8">Adding Additional Control to One-Step Diffusion with Joint Distribution Matching
+</font></strong><br />
+**Yihong Luo**, Tianyang Hu, Yifan Song, Jiacheng Sun, Zhenguo Li, Jing Tang <br />
+Preprint <br />
+[[Paper]](https://arxiv.org/abs/2503.06652) <br />
+
 
 Publications
 ===
