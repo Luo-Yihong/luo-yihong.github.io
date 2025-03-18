@@ -20,6 +20,7 @@ Academic Service: reviewer for ICML, ICLR, NeurIPS, CVPR, ICCV, etc.
 
 News
 ===
+- **<font style = "color:#FF8000">[03/2025]</font>** We release <a href="https://arxiv.org/abs/2503.13070">R0</a>, a novel conditional generation approach via regularized reward maximization. **R0 is the first RLHF algorithm that enables post-training diffusion to few-step text-to-image generator without relying on diffusion distillation or images**.
 - **<font style = "color:#FF8000">[03/2025]</font>** We release <a href="https://tdm-t2x.github.io/">TDM</a>, unifying the trajectory distillation and distribution. TDM can distill pre-trained DMs to a few-step generator with better performance with extremely low cost. In particular, TDM distills PixArt to a 4-step generator with **2 A800 hours and outperforms teacher regarding real user preference**.
 - **<font style = "color:#FF8000">[03/2025]</font>** We release <a href="https://arxiv.org/abs/2503.06652">JDM</a>, a method can add additional control *unkown to teacher* to one-step student. Moreover, JDM decouples the condition learning and fidelity learning, enabling improved usage of classifier-free guidance (CFG) and seamless integration of **human feedback learning** (HFL).
 - **<font style = "color:#FF8000">[01/2025]</font>** Two first/co-first author papers accepted to ***ICLR 2025***.
@@ -29,6 +30,12 @@ Publications
 ===
 
 (<em><sup>*</sup> denotes co-first authors</em>)
+
+<strong><font style="color:#1f57b8">Rewards Are Enough for Fast Photo-Realistic Text-to-image Generation
+</font></strong><br />
+**Yihong Luo**, Tianyang Hu, Weijian Luo, Kenji Kawaguchi, Jing Tang <br />
+Preprint, 2025 <br />
+[[Paper]](https://arxiv.org/abs/2503.13070) <br />
 
 <strong><font style="color:#1f57b8">Learning Few-Step Diffusion Models by Trajectory Distribution Matching
 </font></strong><br />
