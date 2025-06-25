@@ -22,7 +22,7 @@ Academic Service: reviewer for ICML, ICLR, NeurIPS, CVPR, ICCV, etc.
 
 News
 ===
-- **<font style = "color:#FF8000">[03/2025]</font>** We release <a href="https://arxiv.org/abs/2506.19741">NCT</a>, a novel approach for adding new controls to one-step generator directly. **NCT is the first algorithm that enables adding controls to one-step generator without relying on diffusion distillation or images**.
+- **<font style = "color:#FF8000">[06/2025]</font>** We release <a href="https://arxiv.org/abs/2506.19741">NCT</a>, a novel approach for adding new controls to one-step generator directly. **NCT is the first algorithm that enables adding controls to one-step generator without relying on diffusion distillation or images**.
 - **<font style = "color:#FF8000">[04/2025]</font>** Delivered an invited talk at ByteDance about Efficient Post-Training of Diffusion Models (Diffusion Distilattion and RLHF). 
 - **<font style = "color:#FF8000">[03/2025]</font>** We release <a href="https://arxiv.org/abs/2503.13070">R0</a>, a novel conditional generation approach via regularized reward maximization. **R0 is the first RLHF algorithm that enables post-training diffusion to few-step text-to-image generator without relying on diffusion distillation or images**.
 - **<font style = "color:#FF8000">[03/2025]</font>** We release <a href="https://tdm-t2x.github.io/">TDM</a>, unifying the trajectory distillation and distribution matching. TDM can distill pre-trained DMs to a few-step generator with better performance with extremely low cost. In particular, TDM distills PixArt to a 4-step generator with **2 A800 hours and outperforms teacher regarding real user preference**.
