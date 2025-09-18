@@ -22,6 +22,7 @@ Academic Service: reviewer for ICML, ICLR, NeurIPS, CVPR, ICCV, etc.
 
 News
 ===
+- **<font style = "color:#FF8000">[06/2025]</font>** Two first author papers are accpeted to ***NeurIPS 2025***🎉🎉🎉
 - **<font style = "color:#FF8000">[06/2025]</font>** Two first author papers are accpeted to ***ICCV 2025***🎉🎉🎉: 1) <a href="https://tdm-t2x.github.io/">TDM</a> -- SOTA few-step text-to-image genertion, making few-step student better than its teacher; 2) <a href="https://arxiv.org/abs/2503.06652">JDM</a> -- the first algorithm that can add additional control *unkown to teacher* to one-step student.
 - **<font style = "color:#FF8000">[06/2025]</font>** We release <a href="https://arxiv.org/abs/2506.19741">NCT</a>, a novel approach for adding new controls to one-step generator directly. **NCT is the first algorithm that enables adding controls to one-step generator without relying on diffusion distillation or images**.
 - **<font style = "color:#FF8000">[04/2025]</font>** Delivered an invited talk at ByteDance about Efficient Post-Training of Diffusion Models (Diffusion Distilattion and RLHF). 
@@ -39,13 +40,13 @@ Publications
 <strong><font style="color:#1f57b8">Noise Consistency Training: A Native Approach for One-Step Generator in Learning Additional Controls
 </font></strong><br />
 **Yihong Luo**, Shuchen Xue, Tianyang Hu, Jing Tang <br />
-Preprint, 2025 <br />
+NeurIPS, 2025 <br />
 [[Paper]](https://arxiv.org/abs/2506.19741) <br />
 
 <strong><font style="color:#1f57b8">Rewards Are Enough for Fast Photo-Realistic Text-to-image Generation
 </font></strong><br />
 **Yihong Luo**, Tianyang Hu, Weijian Luo, Kenji Kawaguchi, Jing Tang <br />
-Preprint, 2025 <br />
+NeurIPS, 2025 <br />
 [[Paper]](https://arxiv.org/abs/2503.13070) <br />
 
 <strong><font style="color:#1f57b8">Learning Few-Step Diffusion Models by Trajectory Distribution Matching
