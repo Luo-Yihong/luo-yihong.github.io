@@ -22,7 +22,7 @@ Academic Service: reviewer for ICML, ICLR, NeurIPS, CVPR, ICCV, etc.
 
 News
 ===
-- **<font style = "color:#FF8000">[06/2025]</font>** Two first author papers are accpeted to ***NeurIPS 2025***🎉🎉🎉
+- **<font style = "color:#FF8000">[09/2025]</font>** Two first author papers are accpeted to ***NeurIPS 2025***🎉🎉🎉
 - **<font style = "color:#FF8000">[06/2025]</font>** Two first author papers are accpeted to ***ICCV 2025***🎉🎉🎉: 1) <a href="https://tdm-t2x.github.io/">TDM</a> -- SOTA few-step text-to-image genertion, making few-step student better than its teacher; 2) <a href="https://arxiv.org/abs/2503.06652">JDM</a> -- the first algorithm that can add additional control *unkown to teacher* to one-step student.
 - **<font style = "color:#FF8000">[06/2025]</font>** We release <a href="https://arxiv.org/abs/2506.19741">NCT</a>, a novel approach for adding new controls to one-step generator directly. **NCT is the first algorithm that enables adding controls to one-step generator without relying on diffusion distillation or images**.
 - **<font style = "color:#FF8000">[04/2025]</font>** Delivered an invited talk at ByteDance about Efficient Post-Training of Diffusion Models (Diffusion Distilattion and RLHF). 
