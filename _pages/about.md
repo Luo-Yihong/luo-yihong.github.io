@@ -113,7 +113,7 @@ Education
 
 Experience
 ===
-* <div>Diffusion Distillation Research Intern, Huawei Noah's Ark Lab</div> 
+* <div>Diffusion Post-Training Research Intern, Huawei Noah's Ark Lab</div> 
 * <div>Research Assistant, Hong Kong University of Science and Technology</div> 
 
 ---
