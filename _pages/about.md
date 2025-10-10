@@ -41,19 +41,19 @@ Publications
 <strong><font style="color:#1f57b8">Reinforcing Diffusion Models by Direct Group Preference Optimization
 </font></strong><br />
 **Yihong Luo**, Tianyang Hu, Jing Tang <br />
-NeurIPS, 2025 <br />
+Preprint, 2025 <br />
 [[Paper]](https://arxiv.org/abs/2510.08425) <br /
 
 <strong><font style="color:#1f57b8">Noise Consistency Training: A Native Approach for One-Step Generator in Learning Additional Controls
 </font></strong><br />
 **Yihong Luo**, Shuchen Xue, Tianyang Hu, Jing Tang <br />
-NeurIPS, 2025 <br />
+NeurIPS 2025 <br />
 [[Paper]](https://arxiv.org/abs/2506.19741) <br />
 
 <strong><font style="color:#1f57b8">Rewards Are Enough for Fast Photo-Realistic Text-to-image Generation
 </font></strong><br />
 **Yihong Luo**, Tianyang Hu, Weijian Luo, Kenji Kawaguchi, Jing Tang <br />
-NeurIPS, 2025 <br />
+NeurIPS 2025 <br />
 [[Paper]](https://arxiv.org/abs/2503.13070) <br />
 
 <strong><font style="color:#1f57b8">Learning Few-Step Diffusion Models by Trajectory Distribution Matching
