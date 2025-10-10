@@ -42,7 +42,7 @@ Publications
 </font></strong><br />
 **Yihong Luo**, Tianyang Hu, Jing Tang <br />
 Preprint, 2025 <br />
-[[Paper]](https://arxiv.org/abs/2510.08425) <br /
+[[Paper]](https://arxiv.org/abs/2510.08425) <br />
 
 <strong><font style="color:#1f57b8">Noise Consistency Training: A Native Approach for One-Step Generator in Learning Additional Controls
 </font></strong><br />
