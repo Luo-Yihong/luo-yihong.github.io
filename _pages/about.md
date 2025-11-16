@@ -50,7 +50,7 @@ Preprint, 2025 <br />
 NeurIPS 2025 <br />
 [[Paper]](https://arxiv.org/abs/2506.19741) <br />
 
-<strong><font style="color:#1f57b8">Rewards Are Enough for Fast Photo-Realistic Text-to-image Generation
+<strong><font style="color:#1f57b8">Reward-Instruct: A Reward-Centric Approach to Fast Photo-Realistic Image Generation
 </font></strong><br />
 **Yihong Luo**, Tianyang Hu, Weijian Luo, Kenji Kawaguchi, Jing Tang <br />
 NeurIPS 2025 <br />
