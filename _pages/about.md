@@ -11,7 +11,7 @@ redirect_from:
 
 Short Bio
 ===
-I am a final year PhD student at [Hong Kong University of Science and Technology](https://hkust.edu.hk/), supervised by Prof. [Jing Tang](https://scholar.google.com/citations?hl=zh-CN&user=0S4cpyoAAAAJ). My research interests are developing **Efficient Generative Models**, and building **Few-Step Text-to-Image/Video Diffusion Models** for high-quality and real-time generation. I am also interested in **Graph Neural Networks**.
+I am a final year PhD student at [Hong Kong University of Science and Technology](https://hkust.edu.hk/), supervised by Prof. [Jing Tang](https://scholar.google.com/citations?hl=zh-CN&user=0S4cpyoAAAAJ). My research interests are developing **Efficient Generative Models**, and building **Few-Step Text-to-Image/Video Diffusion Models** for high-quality and real-time generation. 
 
 Academic Service: reviewer for ICML, ICLR, NeurIPS, CVPR, ICCV, etc.
 
