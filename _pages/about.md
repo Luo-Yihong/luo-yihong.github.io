@@ -11,17 +11,18 @@ redirect_from:
 
 Short Bio
 ===
-I am a final year PhD student at [Hong Kong University of Science and Technology](https://hkust.edu.hk/), supervised by Prof. [Jing Tang](https://scholar.google.com/citations?hl=zh-CN&user=0S4cpyoAAAAJ). My research interests are developing **Efficient Generative Models**, and building **Few-Step Text-to-Image/Video Diffusion Models** for high-quality and real-time generation. 
+I am a final year PhD student at [Hong Kong University of Science and Technology](https://hkust.edu.hk/), supervised by Prof. [Jing Tang](https://scholar.google.com/citations?hl=zh-CN&user=0S4cpyoAAAAJ). My research interests are developing **Efficient and Powerful Generative Models**, and building **Few-Step Text-to-Image/Video Diffusion Models** for high-quality and real-time generation. 
 
 Academic Service: reviewer for ICML, ICLR, NeurIPS, CVPR, ICCV, etc.
 
-> I am expecting to graduate in December 2025 and am actively seeking opportunities in industrial research roles within China and the broader Asian region. If you are interested in discussing potential opportunities, please don't hesitate to reach out.
+> I am expecting to graduate in January 2026 and am actively seeking opportunities in industrial research roles within China and the broader Asian region. If you are interested in discussing potential opportunities, please don't hesitate to reach out.
 
 > If you're interested in collaborating or exploring potential research opportunities, please don't hesitate to reach out (带带哥们). 
 
 
 News
 ===
+- **<font style = "color:#FF8000">[01/2026]</font>** One first author paper, <a href="https://arxiv.org/abs/2510.08425">DGPO</a>, is accpeted to ***ICLR 2026***🎉🎉🎉
 - **<font style = "color:#FF8000">[10/2025]</font>** We release <a href="https://arxiv.org/abs/2510.08425">DGPO</a>, a novel online RL algorithm for enhacing Diffusion Models. **DGPO trains around 20 times faster than prior SOTA and achieves superior performance on both in-domain and out-of-domain reward metrics**.
 - **<font style = "color:#FF8000">[09/2025]</font>** Two first author papers are accpeted to ***NeurIPS 2025***🎉🎉🎉
 - **<font style = "color:#FF8000">[06/2025]</font>** Two first author papers are accpeted to ***ICCV 2025***🎉🎉🎉: 1) <a href="https://tdm-t2x.github.io/">TDM</a> -- SOTA few-step text-to-image genertion, making few-step student better than its teacher; 2) <a href="https://arxiv.org/abs/2503.06652">JDM</a> -- the first algorithm that can add additional control *unkown to teacher* to one-step student.
