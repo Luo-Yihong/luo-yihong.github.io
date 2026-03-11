@@ -40,10 +40,17 @@ Publications
 
 (<em><sup>*</sup> denotes co-first authors</em>)
 
+<strong><font style="color:#1f57b8">TDM-R1: Reinforcing Few-Step Diffusion Models with Non-Differentiable Reward
+</font></strong><br />
+**Yihong Luo**, Tianyang Hu, Weijian Luo, Jing Tang <br />
+Preprint, 2026 <br />
+[[Paper]](https://arxiv.org/abs/2510.08425) <br />
+
+
 <strong><font style="color:#1f57b8">Reinforcing Diffusion Models by Direct Group Preference Optimization
 </font></strong><br />
 **Yihong Luo**, Tianyang Hu, Jing Tang <br />
-Preprint, 2025 <br />
+ICLR 2026 <br />
 [[Paper]](https://arxiv.org/abs/2510.08425) <br />
 
 <strong><font style="color:#1f57b8">Noise Consistency Training: A Native Approach for One-Step Generator in Learning Additional Controls
