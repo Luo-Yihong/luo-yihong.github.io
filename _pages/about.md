@@ -15,7 +15,7 @@ I am a final year PhD student at [Hong Kong University of Science and Technology
 
 Academic Service: reviewer for ICML, ICLR, NeurIPS, CVPR, ICCV, etc.
 
-> I am expecting to graduate in January 2026 and am actively seeking opportunities in industrial research roles within China and the broader Asian region. If you are interested in discussing potential opportunities, please don't hesitate to reach out.
+> I am expecting to graduate in June 2026 and am actively seeking opportunities in industrial research roles within China and the broader Asian region. If you are interested in discussing potential opportunities, please don't hesitate to reach out.
 
 > If you're interested in collaborating or exploring potential research opportunities, please don't hesitate to reach out (带带哥们). 
 
@@ -122,6 +122,7 @@ Education
 
 Experience
 ===
+* <div>Core contributor to diffusion distillation for the production model deployed in Magic Layer, Canva</div> 
 * <div>Diffusion Post-Training Research Intern, Huawei Noah's Ark Lab</div> 
 * <div>Research Assistant, Hong Kong University of Science and Technology</div> 
 
