@@ -117,7 +117,7 @@ Ocean Engineering (JCR Q1) <br />
 
 Education
 ===
-* 2022/02 --- 2025/12 (expected): **Ph.D.** in Data Science and Analytics, Hong Kong University of Science and Technology
+* 2022/02 --- 2026/06: **Ph.D.** in Data Science and Analytics, Hong Kong University of Science and Technology
 * 2017/09 --- 2021/06: **B.Sc.** in Information Management and Information System, 	South China University of Technology
 
 Experience
