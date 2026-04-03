@@ -22,6 +22,7 @@ Academic Service: reviewer for ICML, ICLR, NeurIPS, CVPR, ICCV, etc.
 
 News
 ===
+- **<font style = "color:#FF8000">[04/2026]</font>** One co-first author paper, <a href="https://arxiv.org/abs/2512.06356">DDFI</a>, is accpeted to ***SIGIR 2026***🎉🎉🎉
 - **<font style = "color:#FF8000">[03/2026]</font>** We release <a href="https://arxiv.org/abs/2603.07700">TDM-R1</a>, ***the first RL framework for few-step diffusion models with non-differentiable rewards on scales***.
 - **<font style = "color:#FF8000">[01/2026]</font>** One first author paper, <a href="https://arxiv.org/abs/2510.08425">DGPO</a>, is accpeted to ***ICLR 2026***🎉🎉🎉
 - **<font style = "color:#FF8000">[10/2025]</font>** We release <a href="https://arxiv.org/abs/2510.08425">DGPO</a>, a novel online RL algorithm for enhacing Diffusion Models. **DGPO trains around 20 times faster than prior SOTA and achieves superior performance on both in-domain and out-of-domain reward metrics**.
@@ -107,6 +108,12 @@ CVPR 2022 <br />
 Yuhan Chen<sup>*</sup>, **Yihong Luo**<sup>*</sup>, Jing Tang, Liang Yang, Siya Qiu, Chuan Wang, Xiaochun Cao <br />
 IJCAI 2023 <br />
 [[Paper]](https://scholar.google.com/citations?view_op=view_citation&hl=en&user=9VfuwdsAAAAJ&citation_for_view=9VfuwdsAAAAJ:UeHWp8X0CEIC) <br />
+
+<strong><font style="color:#1f57b8">DDFI: Diverse and Distribution-aware Missing Feature Imputation via Two-step Reconstruction</font></strong><br />
+Yifan Song<sup>*</sup>, Fenglin Yu<sup>*</sup>, Yihong Luo<sup>*</sup>, Xingjian Tao, Siya Qiu, Kai Han, Jing Tang <br />
+SIGIR 2026 <br />
+[[Paper]](https://arxiv.org/abs/2512.06356) <br />
+
 
 <strong><font style="color:#1f57b8">SteadySeg: Improving Maritime Trajectory Staging by Steadiness Recognition</font></strong><br />
 Siya Qiu, **Yihong Luo**, Qiong Luo, Jing Tang <br />
