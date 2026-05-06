@@ -22,7 +22,7 @@ Academic Service: reviewer for ICML, ICLR, NeurIPS, CVPR, ICCV, etc.
 
 News
 ===
-- **<font style = "color:#FF8000">[04/2026]</font>** Our <a href="https://arxiv.org/abs/2603.07700">TDM-R1</a> is accepted accpeted to ***ICML 2026***🎉🎉🎉. 
+- **<font style = "color:#FF8000">[05/2026]</font>** Our <a href="https://arxiv.org/abs/2603.07700">TDM-R1</a> is accepted accpeted to ***ICML 2026***🎉🎉🎉. 
 - **<font style = "color:#FF8000">[04/2026]</font>** One co-first author paper, <a href="https://arxiv.org/abs/2512.06356">DART</a>, is accpeted to ***SIGIR 2026***🎉🎉🎉
 - **<font style = "color:#FF8000">[03/2026]</font>** We release <a href="https://arxiv.org/abs/2603.07700">TDM-R1</a>, ***the first RL framework for few-step diffusion models with non-differentiable rewards on scales***.
 - **<font style = "color:#FF8000">[01/2026]</font>** One first author paper, <a href="https://arxiv.org/abs/2510.08425">DGPO</a>, is accpeted to ***ICLR 2026***🎉🎉🎉
