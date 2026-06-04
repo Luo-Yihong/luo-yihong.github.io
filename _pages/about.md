@@ -17,7 +17,7 @@ Academic Service: reviewer for ICML, ICLR, NeurIPS, CVPR, ICCV, etc.
 
 > I am expecting to graduate in June 2026 and am actively seeking opportunities in industrial research roles within China and the broader Asian region. If you are interested in discussing potential opportunities, please don't hesitate to reach out.
 
-> If you're interested in collaborating or exploring potential research opportunities, please don't hesitate to reach out (带带哥们). 
+<!-- > If you're interested in collaborating or exploring potential research opportunities, please don't hesitate to reach out (带带哥们).  -->
 
 
 News
@@ -129,7 +129,8 @@ Education
 
 Experience
 ===
-* <div>Core contributor to diffusion distillation for the production model deployed in Magic Layer, Canva</div> 
+* <div>Diffusion RL Research Intern (Qingyun Intern), Tencent HY</div> 
+* <div>Core contributor to diffusion distillation for Magic Layer, Canva</div> 
 * <div>Diffusion Post-Training Research Intern, Huawei Noah's Ark Lab</div> 
 * <div>Research Assistant, Hong Kong University of Science and Technology</div> 
 
