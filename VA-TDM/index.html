@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>VA-TDM: Velocity Adversarial Distillation for Few-Step Diffusion Models</title>
+  <meta name="description" content="VA-TDM: A Unified View for Improving Few-Step Diffusion Models by Velocity Adversarial Distillation. State-of-the-art 4-step text-to-image and text-to-video generation, scaling to 33B MiniMax-H3.">
+  <meta property="og:title" content="VA-TDM: Velocity Adversarial Distillation">
+  <meta property="og:description" content="A unified view for improving few-step diffusion models. 4-NFE generation on SD3.5, FLUX.2 and 33B MiniMax-H3.">
+  <meta property="og:image" content="static/images/teaser.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="venue">Few-Step Generation · Diffusion Distillation</p>
+    <h1><span class="accent">VA-TDM</span>: A Unified View for Improving Few-Step&nbsp;Diffusion Models by Velocity Adversarial Distillation</h1>
+    <p class="authors">
+      <a href="https://github.com/Luo-Yihong">Yihong Luo</a><sup>1</sup>,&nbsp;
+      <span>Tianyu Pang</span>,&nbsp;
+      <span>Tianyang Hu</span><sup>2</sup>
+    </p>
+    <p class="affils">
+      <span><sup>1</sup>Hong Kong University of Science and Technology</span>
+      <span><sup>2</sup>The Chinese University of Hong Kong, Shenzhen</span>
+    </p>
+    <div class="logos">
+      <img src="static/images/UST_L4.png" alt="HKUST">
+      <img src="static/images/cuhksz.png" alt="CUHK-Shenzhen">
+    </div>
+    <nav class="buttons">
+      <a class="btn" href="static/VA-TDM.pdf"><svg viewBox="0 0 24 24"><path d="M6 2h9l5 5v15H6z M14 2v6h6" /></svg>Paper</a>
+      <a class="btn" href="https://github.com/Luo-Yihong/VA-TDM"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.4-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.6.3-1.1.6-1.3-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.8 1a9.6 9.6 0 0 1 5 0c1.9-1.3 2.8-1 2.8-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.3 4.7-4.6 5 .4.3.7.9.7 1.9V21c0 .3.2.6.7.5A10 10 0 0 0 12 2z"/></svg>Code</a>
+      <a class="btn" href="#videos"><svg viewBox="0 0 24 24"><path d="M4 5h12v14H4z M16 10l5-3v10l-5-3"/></svg>Videos</a>
+      <a class="btn" href="#bibtex"><svg viewBox="0 0 24 24"><path d="M5 3h14v18l-7-4-7 4z"/></svg>BibTeX</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section class="wrap teaser">
+  <figure>
+    <img src="static/images/teaser.jpg" alt="Comparison of MiniMax-H3, Fast-H3 and VA-TDM-H3 on the prompt Hear Beyond Reality">
+    <figcaption>Frames from 33B MiniMax-H3 audio-video generation. <b>VA-TDM-H3 (4 NFE)</b> delivers better visual quality and suffers less oversaturation than the few-step Fast-H3, approaching the 100-NFE teacher. <a href="#videos">Watch the videos with audio ↓</a></figcaption>
+  </figure>
+</section>
+
+<section class="wrap stats">
+  <div class="stat"><div class="num">4</div><div class="lbl">NFE for image, video and audio-video generation</div></div>
+  <div class="stat"><div class="num">0.61 → 0.67</div><div class="lbl">GenEval on SD3.5-Medium, over TDM</div></div>
+  <div class="stat"><div class="num">0.64 → 0.69</div><div class="lbl">OCR on FLUX.2-Klein 4B, over the released 4-step model</div></div>
+  <div class="stat"><div class="num">61.3%</div><div class="lbl">human preference over Fast-H3 on 33B MiniMax-H3</div></div>
+</section>
+
+<section class="wrap" id="abstract">
+  <h2>Abstract</h2>
+  <p>Few-step distillation offers efficient generation with diffusion and flow models, but preserving quality with only a few sampling steps remains challenging. Distribution-matching methods via score distillation provide a strong foundation, yet they rely on accurately tracking the student’s changing distribution. At intermediate generation steps in few-step sampling, student-score estimation can be difficult, and commonly used estimators may describe a different distribution from the one used to update the student.</p>
+  <p>Flow matching allows a more flexible approach to supervision through velocity fields constructed from the student’s sampling process. Building on this perspective, we introduce <b>Velocity Adversarial Distillation (VAD)</b>, which uses a learned critic to compare student and teacher fields and turn their disagreement into feedback for learning. VAD unifies score distillation, Fisher-based matching, and moment matching, also explaining existing heuristic MMD updates and delivering new training objectives.</p>
+  <p>We further develop <b>VA-TDM</b>, which follows trajectory distribution matching: providing supervision for partial denoising along the student trajectory. Beyond this, VA-TDM combines transition-aware online velocity learning and dual-form VAD supervision across intermediate student transitions. Extensive results show that VA-TDM achieves state-of-the-art four-step performance in both text-to-image and text-to-video generation across various backbones and scales effectively to 33B MiniMax-H3. In particular, VA-TDM-H3 notably outperforms the few-step Fast-H3 and is closer to the original many-step H3 according to human preference.</p>
+</section>
+
+<section class="band" id="videos">
+  <div class="wrap">
+    <h2>Audio-Video Generation on 33B MiniMax-H3</h2>
+    <p class="lead">Side-by-side samples from the 100-NFE teacher, the official 4-NFE Fast-H3, and our 4-NFE VA-TDM-H3. All clips are 768×512, 24 fps, about 10 seconds, with the original generated audio. Press <b>Play all</b> to watch the three in sync, and choose which model’s soundtrack to hear.</p>
+
+    <div class="player" id="player">
+      <div class="panes">
+        <div class="pane"><div class="tag">MiniMax-H3 <span>100 NFE</span></div><video id="v-base" playsinline muted preload="none"></video></div>
+        <div class="pane"><div class="tag">Fast-H3 <span>4 NFE</span></div><video id="v-fast" playsinline muted preload="none"></video></div>
+        <div class="pane ours"><div class="tag">VA-TDM-H3 (Ours) <span>4 NFE</span></div><video id="v-vatdm" playsinline muted preload="none"></video></div>
+      </div>
+      <div class="controls">
+        <button id="btn-play" class="primary">▶ Play all</button>
+        <button id="btn-restart">↺ Restart</button>
+        <div class="seek"><input type="range" id="seek" min="0" max="1000" value="0" aria-label="Seek"></div>
+        <div class="audio-pick" role="radiogroup" aria-label="Soundtrack">
+          <span>Sound:</span>
+          <label><input type="radio" name="audio" value="none" checked> Off</label>
+          <label><input type="radio" name="audio" value="base"> H3</label>
+          <label><input type="radio" name="audio" value="fast"> Fast</label>
+          <label><input type="radio" name="audio" value="vatdm"> Ours</label>
+        </div>
+      </div>
+      <div class="prompt-box">
+        <h3 id="p-title"></h3>
+        <p id="p-summary"></p>
+        <details><summary>Full prompt</summary><pre id="p-full"></pre></details>
+      </div>
+    </div>
+
+    <div class="thumbs" id="thumbs"></div>
+    <p class="note">Prompts marked <span class="badge">paper</span> appear in the paper figures. Base and Fast-H3 samples use the same prompts but were generated with different seeds from VA-TDM-H3.</p>
+
+    <div class="study">
+      <figure>
+        <img src="static/images/h3_user_study.png" alt="Human preference study on MiniMax-H3">
+        <figcaption><b>Human preference on audio-video synthesis.</b> Participants compared two anonymized audio-videos for audio-visual quality and prompt alignment. VA-TDM wins 61.33% of comparisons against Fast-H3 at the same 4-NFE budget and reaches a 45.53% preference rate against the 100-NFE teacher, compared with 24.67% for Fast-H3.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" id="method">
+  <h2>Method</h2>
+
+  <h3>Why velocity instead of score?</h3>
+  <p>Trajectory Distribution Matching (TDM) supervises every intermediate transition of a few-step student, so each step learns a partial denoising task. Score-based updates, however, need the score of the student's perturbed intermediate output. The student's clean prediction and its retained residual are correlated, so perturbing an intermediate output is not the same as adding fresh Gaussian noise to the clean prediction: direct estimation can involve high-variance targets, while clean-target denoising can estimate a different distribution from the one being supervised. Velocity targets can be defined through paths with coupled endpoints, which lets us build student fields that respect the actual sampling process.</p>
+
+  <h3>Velocity Adversarial Distillation (VAD)</h3>
+  <p>A vector-valued critic \(\mathbf f\) compares the teacher velocity \(\mathbf u_\tau\) with a student velocity \(\bar{\mathbf v}^F_{\theta,\tau}\). The critic maximizes</p>
+  <div class="eq">\[\max_{\mathbf f}\; \mathbb E\Big[\mathbf f(\mathbf x_\tau)^\top\big(\mathbf u_\tau(\mathbf x_\tau)-\bar{\mathbf v}^F_{\theta,\tau}\big)-\tfrac12\|\mathbf f(\mathbf x_\tau)\|^2\Big],\]</div>
+  <p>whose optimum is exactly the velocity residual \(\mathbf f^\star_F=\mathbf u_\tau-\bar{\mathbf v}^F_{\theta,\tau}\). The student opposes the critic, and the game admits a Nash equilibrium with \(\bar{\mathbf v}^F_{\theta^\star,\tau}=\mathbf u_\tau\) and \(\mathbf f^\star\equiv\mathbf 0\).</p>
+
+  <div class="cards">
+    <div class="card">
+      <h4>Which field to match</h4>
+      <p><b>A-form</b> is a rectified velocity capturing the expected clean prediction conditioned on a perturbed sample: low-variance, conditional-moment supervision.</p>
+      <p><b>B-form</b> is a score-equivalent Gaussian velocity for the student's perturbed distribution: full distributional supervision.</p>
+    </div>
+    <div class="card">
+      <h4>How to update the generator</h4>
+      <p>The <b>pathwise</b> update differentiates through the whole sampling chain. The <b>conditional-mean</b> update moves only the student velocity and is made tractable by a <b>flow-product surrogate</b> with the same gradient.</p>
+    </div>
+    <div class="card">
+      <h4>A unified view</h4>
+      <p>Different choices recover <b>reverse-KL score distillation</b>, <b>Fisher-based field matching</b> and <b>conditional moment matching</b>. VAD also explains the heuristic update of MMD and derives a surrogate recovering the exact gradient of its intended objective.</p>
+    </div>
+  </div>
+
+  <h3>VA-TDM: distillation along the student trajectory</h3>
+  <ul class="checks">
+    <li><b>Dual-form supervision with a shared backbone.</b> A-form and B-form games are optimized together, \(\mathcal L_{\mathrm{mix}}=\lambda_m\mathcal L^{A}_{\mathrm{mix}}+(1-\lambda_m)\mathcal L^{B}_{\mathrm{mix}}\), with two online-field heads on one backbone. Sharing reduces cost and also improves quality.</li>
+    <li><b>Transition-aware online fields.</b> Samples from different student steps follow different distributions even at the same noise level, so field estimation is conditioned on the transition being supervised.</li>
+    <li><b>Path / flow-product mixing.</b> \(\mathcal L^F_{\mathrm{mix}}=(1-\lambda)\mathcal L^F_{\mathrm{path,sg}}+\lambda\mathcal L^F_{\mathrm{fp,sg}}\) gives an explicit knob for balancing the adversarial game.</li>
+    <li><b>Regularization-corrected critic.</b> The online field is regularized toward the teacher velocity, and the critic is rescaled to \(\mathbf f^F_\psi=(1+\lambda_r)(\mathbf u_\tau-\mathbf h^F_\psi)\) accordingly.</li>
+    <li><b>On-trajectory ODE regression warm-up.</b> Before VAD, the student regresses multi-step teacher ODE targets from its own rollouts, which directly targets the intermediate transitions VA-TDM optimizes.</li>
+  </ul>
+  <p>No extra cost is added at inference: the student still samples in four steps.</p>
+
+  <figure class="narrow">
+    <img src="static/images/compare_sg.png" alt="Detached versus non-detached critic">
+    <figcaption>Propagating gradients through the critic output leads to unstable training and collapse; VA-TDM stops the gradient of the whole critic output.</figcaption>
+  </figure>
+</section>
+
+<section class="band" id="results">
+  <div class="wrap">
+    <h2>Text-to-Image Results</h2>
+    <p class="lead">Four-step generators distilled from SD3.5-Medium and FLUX.2-Klein-Base 4B. GenEval and OCR measure prompt following, Aesthetic Score image quality, ImageReward / PickScore / HPS human preference (on DrawBench), and pairwise LPIPS sample diversity. Best few-step results are <b>bold</b>, second best <u>underlined</u>.</p>
+
+    <div class="tabs" role="tablist">
+      <button class="tab active" data-tab="sd35">SD3.5-Medium</button>
+      <button class="tab" data-tab="flux">FLUX.2-Klein 4B</button>
+      <button class="tab" data-tab="ablation">Ablation</button>
+    </div>
+
+    <div class="table-wrap tabpane active" id="tab-sd35">
+      <table>
+        <thead><tr><th>Model</th><th>NFE</th><th>GenEval</th><th>OCR</th><th>Aest.</th><th>ImgRwd</th><th>PickScore</th><th>HPSv2</th><th>HPSv3</th><th>LPIPS</th></tr></thead>
+        <tbody>
+          <tr class="teacher"><td>Teacher (CFG 4.5)</td><td>50×2</td><td>0.65</td><td>0.58</td><td>5.37</td><td>0.86</td><td>0.8628</td><td>0.2805</td><td>9.78</td><td>0.61</td></tr>
+          <tr class="teacher"><td>Teacher (CFG 7)</td><td>50×2</td><td>0.67</td><td>0.62</td><td>5.37</td><td>0.96</td><td>0.8640</td><td>0.2854</td><td>9.87</td><td>0.60</td></tr>
+          <tr class="sep"><td>DMD2</td><td>4</td><td>0.60</td><td>0.53</td><td>5.55</td><td>1.00</td><td>0.8648</td><td><u>0.2977</u></td><td>11.18</td><td>0.53</td></tr>
+          <tr><td>D-DMD</td><td>4</td><td>0.55</td><td>0.56</td><td>5.51</td><td>0.99</td><td>0.8567</td><td>0.2897</td><td>10.93</td><td>0.57</td></tr>
+          <tr><td>DPDMD</td><td>4</td><td><u>0.62</u></td><td>0.33</td><td>5.28</td><td>0.80</td><td>0.8530</td><td>0.2707</td><td>8.13</td><td><b>0.59</b></td></tr>
+          <tr><td>TDM</td><td>4</td><td>0.61</td><td><u>0.57</u></td><td><u>5.58</u></td><td><u>1.01</u></td><td><u>0.8679</u></td><td>0.2969</td><td><u>11.54</u></td><td>0.57</td></tr>
+          <tr class="ours sep"><td>VA-TDM (Ours)</td><td>4</td><td><b>0.67</b></td><td><b>0.59</b></td><td><b>5.65</b></td><td><b>1.02</b></td><td><b>0.8702</b></td><td><b>0.3010</b></td><td><b>11.89</b></td><td><u>0.58</u></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="table-wrap tabpane" id="tab-flux">
+      <table>
+        <thead><tr><th>Model</th><th>NFE</th><th>GenEval</th><th>OCR</th><th>Aest.</th><th>ImgRwd</th><th>PickScore</th><th>HPSv2</th><th>HPSv3</th><th>LPIPS</th></tr></thead>
+        <tbody>
+          <tr class="teacher"><td>Teacher (CFG 4.0)</td><td>50×2</td><td>0.77</td><td>0.60</td><td>5.31</td><td>0.85</td><td>0.8605</td><td>0.2768</td><td>10.28</td><td>0.56</td></tr>
+          <tr class="teacher"><td>Teacher (CFG 7)</td><td>50×2</td><td>0.80</td><td>0.64</td><td>5.38</td><td>0.93</td><td>0.8620</td><td>0.2840</td><td>10.58</td><td>0.54</td></tr>
+          <tr class="sep"><td>FLUX.2-Klein 4B (released)</td><td>4</td><td><u>0.78</u></td><td><u>0.64</u></td><td><u>5.28</u></td><td><u>1.04</u></td><td><b>0.8746</b></td><td><u>0.2886</u></td><td><u>11.27</u></td><td><u>0.47</u></td></tr>
+          <tr class="ours sep"><td>VA-TDM (Ours)</td><td>4</td><td><b>0.80</b></td><td><b>0.69</b></td><td><b>5.43</b></td><td><b>1.07</b></td><td><u>0.8694</u></td><td><b>0.2930</b></td><td><b>11.58</b></td><td><b>0.56</b></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="table-wrap tabpane" id="tab-ablation">
+      <table>
+        <thead><tr><th>Configuration (4-step SD3.5-Medium)</th><th>GenEval</th><th>OCR</th><th>Aest.</th><th>ImgRwd</th><th>PickScore</th><th>HPSv2</th><th>HPSv3</th><th>LPIPS</th></tr></thead>
+        <tbody>
+          <tr><td>\(\lambda_m=1\) (A-form only)</td><td>0.64</td><td>0.55</td><td>5.53</td><td>1.00</td><td>0.8671</td><td>0.2949</td><td>11.20</td><td><u>0.58</u></td></tr>
+          <tr><td>\(\lambda_m=0\) (B-form only)</td><td>0.61</td><td>0.57</td><td>5.57</td><td>0.99</td><td>0.8665</td><td><u>0.2987</u></td><td><u>11.47</u></td><td><b>0.59</b></td></tr>
+          <tr><td>\(\lambda_m=0\) w/o transition-aware field</td><td>0.58</td><td>0.53</td><td>5.56</td><td>0.99</td><td>0.8655</td><td>0.2964</td><td>11.13</td><td>0.56</td></tr>
+          <tr class="sep"><td>\(\lambda_m=0.8\) w/o shared backbone</td><td>0.62</td><td>0.56</td><td>5.55</td><td>0.99</td><td>0.8669</td><td>0.2971</td><td>11.33</td><td>0.57</td></tr>
+          <tr><td>\(\lambda_m=0.8\)</td><td>0.63</td><td><u>0.58</u></td><td>5.56</td><td><u>1.01</u></td><td>0.8674</td><td>0.2983</td><td><u>11.47</u></td><td><u>0.58</u></td></tr>
+          <tr><td class="indent">+ path/flow-product mixing (\(\lambda=0.7\))</td><td>0.65</td><td>0.57</td><td>5.56</td><td>0.96</td><td><u>0.8687</u></td><td>0.2950</td><td>11.39</td><td><b>0.59</b></td></tr>
+          <tr><td class="indent">+ field regularization (\(\lambda_r=1\))</td><td><u>0.66</u></td><td><u>0.58</u></td><td><u>5.58</u></td><td>0.96</td><td>0.8682</td><td>0.2952</td><td>11.44</td><td>0.57</td></tr>
+          <tr class="ours"><td class="indent">+ regularization-corrected critic</td><td><b>0.67</b></td><td><b>0.59</b></td><td><b>5.65</b></td><td><b>1.02</b></td><td><b>0.8702</b></td><td><b>0.3010</b></td><td><b>11.89</b></td><td><u>0.58</u></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <figure class="qual">
+      <img src="static/images/main_compare_new.jpg" alt="Qualitative comparison on SD3.5-Medium" loading="lazy">
+      <figcaption><b>Qualitative comparison on SD3.5-Medium.</b> Previous few-step methods tend to oversaturate or produce overly dark images; VA-TDM avoids these artifacts and stays closest to the 50-NFE base model.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="wrap" id="bibtex">
+  <h2>BibTeX</h2>
+  <div class="bib">
+    <button class="copy" id="copy-bib">Copy</button>
+<pre id="bib-text">@article{luo2026vatdm,
+  title   = {VA-TDM: A Unified View for Improving Few-Step Diffusion Models
+             by Velocity Adversarial Distillation},
+  author  = {Luo, Yihong and Pang, Tianyu and Hu, Tianyang},
+  journal = {arXiv preprint},
+  year    = {2026}
+}</pre>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">© 2026 VA-TDM authors. All videos on this page are model-generated samples.</div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" defer
+  onload="renderMathInElement(document.body,{delimiters:[{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]})"></script>
+<script src="static/prompts.js"></script>
+<script src="static/main.js"></script>
+</body>
+</html>
