@@ -88,7 +88,6 @@
     b.dataset.id = s.id;
     b.title = s.title;
     b.innerHTML = `<img loading="lazy" src="static/videos/${s.id}_vatdm.jpg" alt="">` +
-      (s.paper ? '<span class="badge">paper</span>' : '') +
       `<span class="cap"></span>`;
     b.querySelector('.cap').textContent = s.title;
     b.addEventListener('click', () => {
