@@ -22,18 +22,18 @@ Academic Service: reviewer for ICML, ICLR, NeurIPS, CVPR, ICCV, etc.
 
 News
 ===
-- **<font style = "color:#FF8000">[05/2026]</font>** Our <a href="https://arxiv.org/abs/2603.07700">TDM-R1</a> is accepted accpeted to ***ICML 2026***🎉🎉🎉. 
-- **<font style = "color:#FF8000">[04/2026]</font>** One co-first author paper, <a href="https://arxiv.org/abs/2512.06356">DART</a>, is accpeted to ***SIGIR 2026***🎉🎉🎉
+- **<font style = "color:#FF8000">[05/2026]</font>** Our <a href="https://arxiv.org/abs/2603.07700">TDM-R1</a> is accepted to ***ICML 2026***🎉🎉🎉. 
+- **<font style = "color:#FF8000">[04/2026]</font>** One co-first author paper, <a href="https://arxiv.org/abs/2512.06356">DART</a>, is accepted to ***SIGIR 2026***🎉🎉🎉
 - **<font style = "color:#FF8000">[03/2026]</font>** We release <a href="https://arxiv.org/abs/2603.07700">TDM-R1</a>, ***the first RL framework for few-step diffusion models with non-differentiable rewards on scales***.
-- **<font style = "color:#FF8000">[01/2026]</font>** One first author paper, <a href="https://arxiv.org/abs/2510.08425">DGPO</a>, is accpeted to ***ICLR 2026***🎉🎉🎉
-- **<font style = "color:#FF8000">[10/2025]</font>** We release <a href="https://arxiv.org/abs/2510.08425">DGPO</a>, a novel online RL algorithm for enhacing Diffusion Models. **DGPO trains around 20 times faster than prior SOTA and achieves superior performance on both in-domain and out-of-domain reward metrics**.
-- **<font style = "color:#FF8000">[09/2025]</font>** Two first author papers are accpeted to ***NeurIPS 2025***🎉🎉🎉
-- **<font style = "color:#FF8000">[06/2025]</font>** Two first author papers are accpeted to ***ICCV 2025***🎉🎉🎉: 1) <a href="https://tdm-t2x.github.io/">TDM</a> -- SOTA few-step text-to-image genertion, making few-step student better than its teacher; 2) <a href="https://arxiv.org/abs/2503.06652">JDM</a> -- the first algorithm that can add additional control *unkown to teacher* to one-step student.
+- **<font style = "color:#FF8000">[01/2026]</font>** One first author paper, <a href="https://arxiv.org/abs/2510.08425">DGPO</a>, is accepted to ***ICLR 2026***🎉🎉🎉
+- **<font style = "color:#FF8000">[10/2025]</font>** We release <a href="https://arxiv.org/abs/2510.08425">DGPO</a>, a novel online RL algorithm for enhancing Diffusion Models. **DGPO trains around 20 times faster than prior SOTA and achieves superior performance on both in-domain and out-of-domain reward metrics**.
+- **<font style = "color:#FF8000">[09/2025]</font>** Two first author papers are accepted to ***NeurIPS 2025***🎉🎉🎉
+- **<font style = "color:#FF8000">[06/2025]</font>** Two first author papers are accepted to ***ICCV 2025***🎉🎉🎉: 1) <a href="https://tdm-t2x.github.io/">TDM</a> -- SOTA few-step text-to-image generation, making few-step student better than its teacher; 2) <a href="https://arxiv.org/abs/2503.06652">JDM</a> -- the first algorithm that can add additional control *unknown to teacher* to one-step student.
 - **<font style = "color:#FF8000">[06/2025]</font>** We release <a href="https://arxiv.org/abs/2506.19741">NCT</a>, a novel approach for adding new controls to one-step generator directly. **NCT is the first algorithm that enables adding controls to one-step generator without relying on diffusion distillation or images**.
-- **<font style = "color:#FF8000">[04/2025]</font>** Delivered an invited talk at ByteDance about Efficient Post-Training of Diffusion Models (Diffusion Distilattion and RLHF). 
+- **<font style = "color:#FF8000">[04/2025]</font>** Delivered an invited talk at ByteDance about Efficient Post-Training of Diffusion Models (Diffusion Distillation and RLHF). 
 - **<font style = "color:#FF8000">[03/2025]</font>** We release <a href="https://arxiv.org/abs/2503.13070">R0</a>, a novel conditional generation approach via regularized reward maximization. **R0 is the first RLHF algorithm that enables post-training diffusion to few-step text-to-image generator without relying on diffusion distillation or images**.
 - **<font style = "color:#FF8000">[03/2025]</font>** We release <a href="https://tdm-t2x.github.io/">TDM</a>, unifying the trajectory distillation and distribution matching. TDM can distill pre-trained DMs to a few-step generator with better performance with extremely low cost. In particular, TDM distills PixArt to a 4-step generator with **2 A800 hours and outperforms teacher regarding real user preference**.
-- **<font style = "color:#FF8000">[03/2025]</font>** We release <a href="https://arxiv.org/abs/2503.06652">JDM</a>, a method can add additional control *unkown to teacher* to one-step student. Moreover, JDM decouples the condition learning and fidelity learning, enabling improved usage of classifier-free guidance (CFG) and seamless integration of **human feedback learning** (HFL).
+- **<font style = "color:#FF8000">[03/2025]</font>** We release <a href="https://arxiv.org/abs/2503.06652">JDM</a>, a method can add additional control *unknown to teacher* to one-step student. Moreover, JDM decouples the condition learning and fidelity learning, enabling improved usage of classifier-free guidance (CFG) and seamless integration of **human feedback learning** (HFL).
 - **<font style = "color:#FF8000">[01/2025]</font>** Two first/co-first author papers are accepted to ***ICLR 2025***.
 
 
@@ -46,7 +46,7 @@ Publications
 </font></strong><br />
 **Yihong Luo**, Tianyang Hu, Weijian Luo, Jing Tang <br />
 ICML 2026 <br />
-[[Paper]](https://arxiv.org/abs/2510.08425) <br />
+[[Paper]](https://arxiv.org/abs/2603.07700) <br />
 
 
 <strong><font style="color:#1f57b8">Reinforcing Diffusion Models by Direct Group Preference Optimization
@@ -136,7 +136,7 @@ Experience
 
 ---
 <script>
-document.write("Last modifid at: "+document.lastModified+"" )
+document.write("Last modified at: "+document.lastModified+"" )
 </script>
 
 <a href="https://info.flagcounter.com/kdvh"><img src="https://s11.flagcounter.com/map/kdvh/size_s/txt_000000/border_CCCCCC/pageviews_1/viewers_0/flags_0/" alt="Flag Counter" border="0"></a>
