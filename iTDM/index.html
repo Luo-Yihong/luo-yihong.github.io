@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>iTDM: Reinforcing Diffusion Models by Instantaneous Trajectory Distribution Matching</title>
+  <meta name="description" content="iTDM: Reinforcing Diffusion Models by Instantaneous Trajectory Distribution Matching. Exact baseline invariance for forward diffusion RL, ~3x faster convergence to 0.87 on GenEval2 without collapse, unifying online and offline RL.">
+  <meta property="og:title" content="iTDM: Reinforcing Diffusion Models by Instantaneous Trajectory Distribution Matching">
+  <meta property="og:description" content="Principled forward diffusion RL via Instantaneous Trajectory Distribution Matching. Nearly 3x faster on GenEval2 (0.87), SOTA CFG-guided & conditional online RL, and stable offline RL.">
+  <meta property="og:url" content="https://luo-yihong.github.io/iTDM/">
+  <meta property="og:image" content="https://luo-yihong.github.io/iTDM/static/images/geneval2_teaser_wide.png">
+  <link rel="canonical" href="https://luo-yihong.github.io/iTDM/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="static/style.css?v=20261124">
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="venue">Diffusion Reinforcement Learning Meets Trajectory Distribution Matching</p>
+    <h1><span class="accent">iTDM</span>: Reinforcing Diffusion Models by Instantaneous&nbsp;Trajectory Distribution Matching</h1>
+    <p class="authors">
+      <a href="https://luo-yihong.github.io/">Yihong Luo</a>
+    </p>
+    <p class="affils">
+      <span>Hong Kong University of Science and Technology</span>
+    </p>
+    <div class="logos">
+      <img src="static/images/UST_L4.png" alt="The Hong Kong University of Science and Technology">
+    </div>
+    <nav class="buttons" aria-label="Primary links">
+      <a class="btn btn-accent" href="static/iTDM.pdf">
+        <svg viewBox="0 0 24 24"><path d="M6 2h9l5 5v15H6z M14 2v6h6"/></svg>Paper (PDF)
+      </a>
+      <a class="btn" href="https://github.com/Luo-Yihong/iTDM" target="_blank" rel="noopener">
+        <svg class="filled" viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.4-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.6.3-1.1.6-1.3-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.8 1a9.6 9.6 0 0 1 5 0c1.9-1.3 2.8-1 2.8-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.3 4.7-4.6 5 .4.3.7.9.7 1.9V21c0 .3.2.6.7.5A10 10 0 0 0 12 2z"/></svg>Code
+      </a>
+      <a class="btn" href="#method">
+        <svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h10M4 17h16"/></svg>Method
+      </a>
+      <a class="btn" href="#qualitative">
+        <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.5"/><path d="M21 15l-5-5L5 20"/></svg>Visuals
+      </a>
+      <a class="btn" href="#results">
+        <svg viewBox="0 0 24 24"><path d="M4 19h16M7 16V9M12 16V5M17 16v-4"/></svg>Results
+      </a>
+      <a class="btn" href="#bibtex">
+        <svg viewBox="0 0 24 24"><path d="M5 3h14v18l-7-4-7 4z"/></svg>BibTeX
+      </a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section class="wrap teaser">
+  <figure class="figure-card">
+    <img class="zoomable" src="static/images/geneval2_teaser_wide.png" alt="GenEval2 scaling performance of iTDM vs DGPO, DiffusionNFT, AWM, and GRPO-fast on SD3.5-Medium">
+    <figcaption>
+      <b>GenEval2 scaling on SD3.5-Medium.</b> <b>iTDM</b> reaches the 0.75 milestone in ~150 GPU hours—nearly <b>3× faster</b> than competing forward diffusion RL methods (DGPO, DiffusionNFT, AWM) and over <b>8× faster</b> than trajectory-based GRPO-fast—while smoothly scaling to <b>0.87</b> without late-stage training collapse.
+    </figcaption>
+  </figure>
+</section>
+
+<section class="wrap stats" aria-label="Key highlights">
+  <div class="stat">
+    <div class="num">~3× Faster → 0.87</div>
+    <div class="lbl">GenEval2 convergence over DGPO / NFT / AWM, scaling smoothly without collapse</div>
+  </div>
+  <div class="stat">
+    <div class="num">0.63 → 0.97</div>
+    <div class="lbl">GenEval under CFG-guided online RL on SD3.5-M (<b>0.98</b> under unguided policy)</div>
+  </div>
+  <div class="stat">
+    <div class="num">0.59 → 0.96</div>
+    <div class="lbl">Visual text rendering (OCR) at CFG = 4.5, breaking the 0.70–0.76 drift bottleneck</div>
+  </div>
+  <div class="stat">
+    <div class="num">Online &amp; Offline</div>
+    <div class="lbl">Unified stationary target; surpasses Diffusion-DPO even in pairwise (<i>G</i> = 2) offline RL</div>
+  </div>
+</section>
+
+<section class="wrap abstract-box" id="abstract">
+  <h2>Abstract</h2>
+  <p>
+    Forward diffusion reinforcement learning (RL)—enabling deterministic ODE sampling without trajectory backpropagation—has grown increasingly popular for efficiently aligning diffusion models. However, we reveal that existing methods essentially rely on <b>signed reward-weighted regression (RWR)</b>, regressing the <i>trainable policy</i> velocity onto rollouts from a <i>behavior distribution</i>. Unbiased baseline subtraction implicitly assumes that the policy velocity equals the behavior marginal velocity—an idealized assumption violated under classifier-free guidance (CFG) rollouts, offline/off-policy updates, and imperfect online self-consistency. This <b>behavior–policy mismatch</b> breaks baseline invariance and injects <b>baseline-induced gradient drift</b>, destabilizing training.
+  </p>
+  <p>
+    To resolve this issue, we propose <b>Instantaneous Trajectory Distribution Matching (iTDM)</b>, taking the infinitesimal limit of Trajectory Distribution Matching toward a time-local reward-guided target via the posterior-score identity to yield a sample-level gradient anchored at the behavior velocity—without learning an additional reward-tilted target score. Tracking this velocity with a lightweight online auxiliary denoiser guarantees <b>exact baseline invariance at the auxiliary optimum</b>, effectively suppressing baseline drift across both online and offline RL.
+  </p>
+  <p>
+    Extensive experiments on SD3.5-Medium across compositional image generation, visual text rendering, and human preference alignment show that iTDM achieves state-of-the-art in-domain and out-of-domain performance. Notably, on the challenging GenEval2 benchmark, iTDM converges nearly 3× faster than competing methods while scaling smoothly to 0.87 without collapse.
+  </p>
+</section>
+
+<section class="band" id="qualitative">
+  <div class="wrap">
+    <h2>Qualitative Comparisons</h2>
+    <p class="lead">
+      Signed RWR pulls the trainable policy toward coarse few-step rollout marginals while drifting under CFG velocity mismatch. By anchoring residuals at the behavior velocity \(v_\phi \approx v_q\) and regularizing solely toward the pretrained reference \(v_{\mathrm{ref}}\), <b>iTDM</b> preserves crisp textures, rich scene context, and accurate typography across both unguided and CFG-guided regimes.
+    </p>
+
+    <div class="qual-stack">
+      <figure class="qual-card">
+        <div class="qual-header">
+          <h3>Human Preference Alignment (PickScore, CFG = 1.0)</h3>
+          <span class="zoom-hint">Click image to enlarge</span>
+        </div>
+        <img class="zoomable" src="static/images/main_compare.jpg" alt="Qualitative comparison on PickScore with SD3.5-Medium under CFG = 1.0">
+        <figcaption>
+          <b>Qualitative comparisons on human preference alignment (PickScore) with SD3.5-Medium.</b> All models are trained and evaluated under \(\mathrm{CFG}=1.0\). Compared with NFT (23.89), AWM (23.94), and DGPO (23.85), <b>iTDM (24.06)</b> faithfully follows intricate prompt details—such as metallic robot reflections, neon storefront signage, and geometric glass vases—while delivering sharper textures and avoiding blurry few-step artifacts.
+        </figcaption>
+      </figure>
+
+      <figure class="qual-card">
+        <div class="qual-header">
+          <h3>Visual Text Rendering: Conditional (CFG = 1.0) vs. CFG-Guided (CFG = 4.5) Online RL</h3>
+          <span class="zoom-hint">Click image to enlarge</span>
+        </div>
+        <img class="zoomable" src="static/images/compare_cfg.jpg" alt="Visual text rendering comparison without CFG vs with CFG on SD3.5-Medium" loading="lazy">
+        <figcaption>
+          <b>Unlocking stable CFG-guided RL for visual text rendering.</b> <i>Left (train w/o CFG):</i> Without guidance, baselines overfit text accuracy by collapsing onto plain, context-free white backgrounds. <i>Right (train w/ CFG):</i> With \(\mathrm{CFG}=4.5\), baselines retain scene context but suffer severe velocity-mismatch drift, producing distorted or illegible text (0.70–0.76 OCR). <b>iTDM</b> excels in both regimes, uniting rich photorealistic scene fidelity with sharp, accurate typography (<b>0.96 OCR</b>) under CFG-guided RL.
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" id="method">
+  <h2>Why Forward Diffusion RL Drifts — and How iTDM Fixes It</h2>
+
+  <h3>1. Hidden Fragility of Existing Forward Diffusion RL (Signed RWR)</h3>
+  <p>
+    Along the linear flow-matching path \(\mathbf{x}_t = (1-t)\mathbf{x}_0 + t\epsilon\) with conditional velocity \(v(\mathbf{x}_t \mid \mathbf{x}_0) = \epsilon - \mathbf{x}_0\), rollout sampling induces a behavior distribution \(q_0\) with noisy marginal \(q_t\) and marginal velocity \(v_q(\mathbf{x}, t) = \mathbb{E}[v(\mathbf{x}_t \mid \mathbf{x}_0) \mid \mathbf{x}_t = \mathbf{x}]\). Existing forward diffusion RL methods—including DGPO, DiffusionNFT, and AWM—center rewards with a prompt-level baseline \(b(\mathbf{c})\) into signed advantages \(A = R - b(\mathbf{c})\) and optimize a <b>signed reward-weighted regression (RWR)</b> core evaluated at the trainable policy \(v_\theta\):
+  </p>
+
+  <div class="eq-box warn">
+    <div class="eq-label">Proposition 2 · Population Gradient Decomposition of Signed RWR</div>
+    \[
+      \nabla_\theta \mathcal{L}_{\mathrm{RWR}}^{A}(\theta)
+      \;=\; \nabla_\theta \mathbb{E}\!\Big[A\,\big\|v(\mathbf{x}_t \mid \mathbf{x}_0) - v_\theta(\mathbf{x}_t, t)\big\|_2^2\Big]
+      \;=\; \underbrace{g_t^A}_{\text{iTDM RL gradient}}
+      \;+\; \underbrace{2\,\mathbb{E}_{q_t}\!\big[m_t\,J_\theta^\top(v_\theta - v_q)\big]}_{\Delta_t^q:\ \text{pull toward rollout } q_t}
+      \;-\; \underbrace{2\,b(\mathbf{c})\,\mathbb{E}_{q_t}\!\big[J_\theta^\top(v_\theta - v_q)\big]}_{\Delta_t^b:\ \text{baseline-induced drift}}
+    \]
+  </div>
+
+  <p>
+    Here \(J_\theta = \partial v_\theta(\mathbf{x}_t, t)/\partial \theta\) and \(m_t(\mathbf{x}) = \mathbb{E}[R \mid \mathbf{x}_t = \mathbf{x}]\). Unlike policy gradients in PPO/GRPO, unbiased baseline subtraction in RWR implicitly assumes \(v_\theta = v_q\). Under <b>CFG-guided rollouts</b>, <b>offline/off-policy updates</b>, or <b>imperfect online self-consistency</b>, pervasive mismatch (\(v_\theta \neq v_q\)) triggers two severe side effects:
+  </p>
+
+  <div class="drift-grid">
+    <div class="drift-card bad-1">
+      <span class="pill">Side Effect 1 · \(-\Delta_t^b\)</span>
+      <h4>Baseline-Induced Gradient Drift</h4>
+      <p>
+        Subtracting \(b(\mathbf{c}) > 0\) breaks baseline invariance (\(\nabla_\theta \mathcal{L}_{\mathrm{RWR}}^A - \nabla_\theta \mathcal{L}_{\mathrm{RWR}}^R = -\Delta_t^b\)) and actively pushes \(v_\theta\) <i>away</i> from \(v_q\) during gradient descent. Unanchored on-policy RWR collapses rapidly, while heuristic proximity anchors in NFT and AWM stagnate or diverge under CFG-guided and offline rollouts.
+      </p>
+    </div>
+    <div class="drift-card bad-2">
+      <span class="pill">Side Effect 2 · \(\Delta_t^q\)</span>
+      <h4>Coarse Rollout-Artifact Fitting</h4>
+      <p>
+        Because \(m_t(\mathbf{x}) \ge 0\), the residual drift \(\Delta_t^q\) pulls \(v_\theta\) toward the behavior marginal \(v_q\). Since online RL uses coarse few-step ODE solvers (~10 steps) for rollout efficiency, \(\Delta_t^q\) forces the policy to fit discretization artifacts—blurring textures and hurting unseen DrawBench quality even at \(\mathrm{CFG}=1.0\).
+      </p>
+    </div>
+  </div>
+
+  <h3>2. Instantaneous Trajectory Distribution Matching (iTDM)</h3>
+  <p>
+    Instead of forcing policy improvement into signed regression at \(v_\theta\), we apply <a href="https://arxiv.org/abs/2503.06674" target="_blank" rel="noopener">Trajectory Distribution Matching (TDM)</a> to the local reverse step \(T_\theta(\mathbf{x}) = \mathbf{x} - \delta v_\theta(\mathbf{x}, t)\) against the time-local reward-guided target \(\pi_t^R(\mathbf{x}) \propto q_t(\mathbf{x})\exp(m_t(\mathbf{x}))\), whose score differs from \(s_{q_t}\) purely by the reward-driven score correction \(s_{\pi_t^R}(\mathbf{x}) - s_{q_t}(\mathbf{x}) = \nabla_{\mathbf{x}} m_t(\mathbf{x})\). Taking the step-normalized infinitesimal limit \(\delta \downarrow 0\) and applying the Gaussian posterior-score identity with the tower property yields an <b>exact sample-level RL gradient</b> anchored at \(v_q\)—requiring <i>no</i> reward-tilted score network:
+  </p>
+
+  <div class="eq-box">
+    <div class="eq-label">Proposition 1 &amp; Lemma 3 · Sample-Level iTDM Gradient &amp; Exact Baseline Invariance</div>
+    \[
+      g_t^A \;:=\; 2\,\mathbb{E}\!\Big[\big(R - b(\mathbf{c})\big)\,J_\theta^\top\big(v_q(\mathbf{x}_t, t) - v(\mathbf{x}_t \mid \mathbf{x}_0)\big)\Big]
+      \;=\; g_t^R
+      \;=\; \frac{2t}{1-t}\,\mathbb{E}_{q_t}\!\Big[J_\theta^\top \nabla_{\mathbf{x}} m_t(\mathbf{x}_t)\Big]
+    \]
+  </div>
+
+  <div class="cards">
+    <div class="card">
+      <span class="step-tag">Lemma 3 · Drift-Free</span>
+      <h4>Exact Baseline Invariance</h4>
+      <p>
+        Because \(\mathbb{E}[v_q(\mathbf{x}_t, t) - v(\mathbf{x}_t \mid \mathbf{x}_0) \mid \mathbf{x}_t, \mathbf{c}] = 0\) holds identically, subtracting any prompt baseline \(b(\mathbf{c})\) leaves \(g_t^A = g_t^R\) strictly unchanged—<b>even when \(v_\theta \neq v_q\)</b>.
+      </p>
+    </div>
+    <div class="card">
+      <span class="step-tag">Online Auxiliary LoRA</span>
+      <h4>Tracking Behavior Velocity \(v_q\)</h4>
+      <p>
+        A lightweight LoRA adapter \(v_\phi\) minimizes \(\mathcal{L}_{\mathrm{aux}}(\phi) = \mathbb{E}[\|v_\phi(\mathbf{x}_t, t) - v(\mathbf{x}_t \mid \mathbf{x}_0)\|_2^2]\) on re-noised clean rollouts without storing solver trajectories, plugging \(\operatorname{sg}(v_\phi)\) into \(g_t^A\) to eliminate \(-\Delta_t^b\).
+      </p>
+    </div>
+    <div class="card">
+      <span class="step-tag">Lemma 2 · Unified Optimal Policy</span>
+      <h4>Artifact-Free Reference Anchor</h4>
+      <p>
+        Regularizing toward \(v_{\mathrm{ref}}\) yields unique optimal score \(s_t^\star = s_t^{\mathrm{ref}} + \frac{1}{\beta}\nabla_{\mathbf{x}} m_t\), achieving strict improvement \(\beta\operatorname{KL}(q_t \| \pi_t^+) > 0\) independent of \((q_t, v_\theta)\) to naturally unify online and offline RL.
+      </p>
+    </div>
+  </div>
+
+  <div class="method-split">
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr class="group-row">
+            <th colspan="4">Unification of Forward Diffusion RL Objectives</th>
+          </tr>
+          <tr class="sub-row">
+            <th>Method</th>
+            <th>Residual Anchor</th>
+            <th>Proximity Anchor \(v_{\mathrm{old}}\)</th>
+            <th>Baseline Invariant (\(v_\theta \neq v_q\))</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>DGPO</td>
+            <td>Policy \(v_\theta\) (group gate)</td>
+            <td>—</td>
+            <td>✗</td>
+          </tr>
+          <tr>
+            <td>DiffusionNFT</td>
+            <td>Policy \(v_\theta\)</td>
+            <td>Rollout \(v_{\theta^-}\)</td>
+            <td>✗</td>
+          </tr>
+          <tr>
+            <td>AWM</td>
+            <td>Policy \(v_\theta\) (IS weight)</td>
+            <td>EMA \(v_{\theta_{\mathrm{EMA}}}\)</td>
+            <td>✗</td>
+          </tr>
+          <tr class="ours sep">
+            <td><b>iTDM (Ours)</b></td>
+            <td><b>Behavior \(v_\phi \approx v_q\)</b></td>
+            <td><b>Not needed (\(v_{\mathrm{ref}}\) only)</b></td>
+            <td><b>✓ (at \(v_\phi = v_q\))</b></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="algo-card">
+      <div>
+        <div class="algo-head">
+          Algorithm 1 · iTDM for Forward Diffusion RL
+          <span>ODE Rollout · No Backprop</span>
+        </div>
+        <div class="algo-req">
+          <b>Input:</b> Policy \(v_\theta\), auxiliary LoRA \(v_\phi\), frozen reference \(v_{\mathrm{ref}}\), group size \(G\), weight \(\beta\).
+        </div>
+        <ol class="algo-steps">
+          <li>Sample prompt \(\mathbf{c} \sim \mathcal{D}_c\) and clean ODE rollouts \(\{\mathbf{x}_{0,i}\}_{i=1}^G \sim q_0(\cdot \mid \mathbf{c})\).</li>
+          <li>Score rewards \(R_i = r(\mathbf{x}_{0,i}, \mathbf{c})\) and compute clipped centered group advantages \(A_i\).</li>
+          <li>Re-noise endpoints: \(\mathbf{x}_{t,i} = (1-t)\mathbf{x}_{0,i} + t\epsilon_i\) with \(t \sim \mu\), \(\epsilon_i \sim \mathcal{N}(\mathbf{0}, \mathbf{I})\).</li>
+          <li>Update auxiliary \(\phi\) on \(\|v_\phi(\mathbf{x}_t, t) - v(\mathbf{x}_t \mid \mathbf{x}_0)\|_2^2\).</li>
+          <li>Update policy \(\theta\) using \(\widehat{g}_t^A = 2\mathbb{E}[A\,J_\theta^\top(\operatorname{sg}(v_\phi) - v(\mathbf{x}_t \mid \mathbf{x}_0))] + \beta\nabla_\theta \|v_\theta - v_{\mathrm{ref}}\|_2^2\).</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="results">
+  <div class="wrap">
+    <h2>Quantitative Results &amp; Training Efficiency</h2>
+    <p class="lead">
+      We post-train SD3.5-Medium across Compositional Generation (GenEval), Visual Text Rendering (OCR), and Human Preference Alignment (PickScore). To detect reward hacking, every checkpoint is additionally evaluated on <b>seven unseen out-of-domain metrics</b> on DrawBench. Best results are in <b>bold</b>, second best <u>underlined</u>.
+    </p>
+
+    <div class="tabs" role="tablist" data-tab-group="tables">
+      <button class="tab active" role="tab" aria-selected="true" data-target="tab-online-cfg45">Online RL · CFG-Guided (CFG = 4.5)</button>
+      <button class="tab" role="tab" aria-selected="false" data-target="tab-online-cfg1">Online RL · Conditional (CFG = 1.0)</button>
+      <button class="tab" role="tab" aria-selected="false" data-target="tab-offline">Offline RL · Group-Wise &amp; Pairwise (G = 2)</button>
+    </div>
+
+    <!-- Tab 1: Online CFG = 4.5 -->
+    <div class="table-wrap tabpane active" id="tab-online-cfg45" data-pane-group="tables">
+      <table>
+        <thead>
+          <tr class="group-row">
+            <th rowspan="2">Model (CFG = 4.5)</th>
+            <th colspan="3" class="col-div">In-Domain Task Metric</th>
+            <th colspan="2" class="col-div">Unseen Image Quality</th>
+            <th colspan="5" class="col-div">Unseen Alignment &amp; Preference (DrawBench)</th>
+          </tr>
+          <tr class="sub-row">
+            <th class="col-div">GenEval</th>
+            <th>OCR</th>
+            <th>PickScore</th>
+            <th class="col-div">Aesthetic</th>
+            <th>DeQA</th>
+            <th class="col-div">CLIPScore</th>
+            <th>HPSv2.1</th>
+            <th>ImgRwd</th>
+            <th>PickScore</th>
+            <th>UniRwd</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="base-row">
+            <td>SD3.5-M (Pretrained Base)</td>
+            <td class="col-div">0.63</td><td>0.59</td><td>21.72</td>
+            <td class="col-div">5.36</td><td>—</td>
+            <td class="col-div">28.50</td><td>27.90</td><td>0.85</td><td>22.34</td><td>3.03</td>
+          </tr>
+
+          <tr class="task-banner"><td colspan="11">Compositional Image Generation (GenEval)</td></tr>
+          <tr>
+            <td>AWM</td>
+            <td class="col-div"><u>0.93</u></td><td>—</td><td>—</td>
+            <td class="col-div"><u>5.12</u></td><td><u>3.43</u></td>
+            <td class="col-div">28.96</td><td><u>24.54</u></td><td><u>0.91</u></td><td><u>22.14</u></td><td><u>3.07</u></td>
+          </tr>
+          <tr>
+            <td>DiffusionNFT</td>
+            <td class="col-div">0.89</td><td>—</td><td>—</td>
+            <td class="col-div">4.92</td><td>2.97</td>
+            <td class="col-div">28.74</td><td>22.62</td><td>0.64</td><td>21.89</td><td>2.97</td>
+          </tr>
+          <tr>
+            <td>DGPO</td>
+            <td class="col-div">0.90</td><td>—</td><td>—</td>
+            <td class="col-div">5.09</td><td>3.17</td>
+            <td class="col-div"><u>28.98</u></td><td>23.87</td><td>0.75</td><td>22.05</td><td>2.98</td>
+          </tr>
+          <tr class="ours">
+            <td><b>iTDM (Ours)</b></td>
+            <td class="col-div"><b>0.97</b></td><td>—</td><td>—</td>
+            <td class="col-div"><b>5.26</b></td><td><b>4.12</b></td>
+            <td class="col-div"><b>29.00</b></td><td><b>28.19</b></td><td><b>0.98</b></td><td><b>22.49</b></td><td><b>3.13</b></td>
+          </tr>
+
+          <tr class="task-banner"><td colspan="11">Visual Text Rendering (OCR)</td></tr>
+          <tr>
+            <td>AWM</td>
+            <td class="col-div">—</td><td>0.75</td><td>—</td>
+            <td class="col-div"><b>5.28</b></td><td>3.62</td>
+            <td class="col-div">28.67</td><td>24.77</td><td><u>0.73</u></td><td>22.05</td><td><u>2.93</u></td>
+          </tr>
+          <tr>
+            <td>DiffusionNFT</td>
+            <td class="col-div">—</td><td>0.70</td><td>—</td>
+            <td class="col-div">5.19</td><td><u>3.67</u></td>
+            <td class="col-div"><u>28.75</u></td><td><u>25.43</u></td><td>0.68</td><td><u>22.10</u></td><td>2.91</td>
+          </tr>
+          <tr>
+            <td>DGPO</td>
+            <td class="col-div">—</td><td><u>0.76</u></td><td>—</td>
+            <td class="col-div">4.95</td><td>2.56</td>
+            <td class="col-div">26.82</td><td>19.73</td><td>-0.45</td><td>20.76</td><td>2.18</td>
+          </tr>
+          <tr class="ours">
+            <td><b>iTDM (Ours)</b></td>
+            <td class="col-div">—</td><td><b>0.96</b></td><td>—</td>
+            <td class="col-div"><u>5.23</u></td><td><b>3.97</b></td>
+            <td class="col-div"><b>28.77</b></td><td><b>27.98</b></td><td><b>0.80</b></td><td><b>22.40</b></td><td><b>3.09</b></td>
+          </tr>
+
+          <tr class="task-banner"><td colspan="11">Human Preference Alignment (PickScore)</td></tr>
+          <tr>
+            <td>AWM</td>
+            <td class="col-div">—</td><td>—</td><td><u>22.80</u></td>
+            <td class="col-div"><u>6.02</u></td><td><u>3.99</u></td>
+            <td class="col-div">27.73</td><td><u>29.78</u></td><td><u>1.18</u></td><td><u>23.23</u></td><td><u>3.27</u></td>
+          </tr>
+          <tr>
+            <td>DiffusionNFT</td>
+            <td class="col-div">—</td><td>—</td><td>22.75</td>
+            <td class="col-div">5.96</td><td>3.86</td>
+            <td class="col-div">27.50</td><td>28.72</td><td>1.14</td><td>23.14</td><td>3.25</td>
+          </tr>
+          <tr>
+            <td>DGPO</td>
+            <td class="col-div">—</td><td>—</td><td>22.37</td>
+            <td class="col-div">5.65</td><td>3.98</td>
+            <td class="col-div"><u>28.12</u></td><td>28.87</td><td>1.10</td><td>22.89</td><td>3.17</td>
+          </tr>
+          <tr class="ours">
+            <td><b>iTDM (Ours)</b></td>
+            <td class="col-div">—</td><td>—</td><td><b>24.08</b></td>
+            <td class="col-div"><b>6.11</b></td><td><b>4.12</b></td>
+            <td class="col-div"><b>28.35</b></td><td><b>32.73</b></td><td><b>1.46</b></td><td><b>24.26</b></td><td><b>3.52</b></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Tab 2: Online CFG = 1.0 -->
+    <div class="table-wrap tabpane" id="tab-online-cfg1" data-pane-group="tables">
+      <table>
+        <thead>
+          <tr class="group-row">
+            <th rowspan="2">Model (CFG = 1.0)</th>
+            <th colspan="3" class="col-div">In-Domain Task Metric</th>
+            <th colspan="2" class="col-div">Unseen Image Quality</th>
+            <th colspan="5" class="col-div">Unseen Alignment &amp; Preference (DrawBench)</th>
+          </tr>
+          <tr class="sub-row">
+            <th class="col-div">GenEval</th>
+            <th>OCR</th>
+            <th>PickScore</th>
+            <th class="col-div">Aesthetic</th>
+            <th>DeQA</th>
+            <th class="col-div">CLIPScore</th>
+            <th>HPSv2.1</th>
+            <th>ImgRwd</th>
+            <th>PickScore</th>
+            <th>UniRwd</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="base-row">
+            <td>SD3.5-M (Pretrained Base)</td>
+            <td class="col-div">0.24</td><td>0.12</td><td>19.82</td>
+            <td class="col-div">5.13</td><td>—</td>
+            <td class="col-div">23.70</td><td>20.40</td><td>-0.58</td><td>20.51</td><td>2.02</td>
+          </tr>
+
+          <tr class="task-banner"><td colspan="11">Compositional Image Generation (GenEval)</td></tr>
+          <tr>
+            <td>AWM</td>
+            <td class="col-div">0.92</td><td>—</td><td>—</td>
+            <td class="col-div">4.71</td><td>3.94</td>
+            <td class="col-div">27.50</td><td>21.41</td><td>0.15</td><td>21.35</td><td>2.62</td>
+          </tr>
+          <tr>
+            <td>DiffusionNFT</td>
+            <td class="col-div">0.96</td><td>—</td><td>—</td>
+            <td class="col-div">4.88</td><td>4.05</td>
+            <td class="col-div">27.34</td><td>22.90</td><td>0.30</td><td>21.51</td><td>2.82</td>
+          </tr>
+          <tr>
+            <td>DGPO</td>
+            <td class="col-div"><u>0.97</u></td><td>—</td><td>—</td>
+            <td class="col-div"><b>5.15</b></td><td><u>4.06</u></td>
+            <td class="col-div"><u>27.64</u></td><td><u>24.03</u></td><td><b>0.71</b></td><td><b>22.04</b></td><td><u>2.96</u></td>
+          </tr>
+          <tr class="ours">
+            <td><b>iTDM (Ours)</b></td>
+            <td class="col-div"><b>0.98</b></td><td>—</td><td>—</td>
+            <td class="col-div"><u>5.08</u></td><td><b>4.23</b></td>
+            <td class="col-div"><b>27.69</b></td><td><b>24.73</b></td><td><u>0.65</u></td><td><u>21.74</u></td><td><b>3.04</b></td>
+          </tr>
+
+          <tr class="task-banner"><td colspan="11">Visual Text Rendering (OCR)</td></tr>
+          <tr>
+            <td>AWM</td>
+            <td class="col-div">—</td><td>0.85</td><td>—</td>
+            <td class="col-div">4.16</td><td>3.25</td>
+            <td class="col-div">21.02</td><td>13.70</td><td>-1.69</td><td>19.69</td><td>1.52</td>
+          </tr>
+          <tr>
+            <td>DiffusionNFT</td>
+            <td class="col-div">—</td><td><b>0.97</b></td><td>—</td>
+            <td class="col-div">3.52</td><td><u>3.52</u></td>
+            <td class="col-div"><u>22.13</u></td><td><u>14.86</u></td><td><u>-1.49</u></td><td><u>19.86</u></td><td>1.50</td>
+          </tr>
+          <tr>
+            <td>DGPO</td>
+            <td class="col-div">—</td><td><b>0.97</b></td><td>—</td>
+            <td class="col-div"><u>4.19</u></td><td>2.13</td>
+            <td class="col-div">21.36</td><td>14.16</td><td>-1.70</td><td>19.69</td><td><u>1.53</u></td>
+          </tr>
+          <tr class="ours">
+            <td><b>iTDM (Ours)</b></td>
+            <td class="col-div">—</td><td><b>0.97</b></td><td>—</td>
+            <td class="col-div"><b>4.48</b></td><td><b>3.88</b></td>
+            <td class="col-div"><b>22.80</b></td><td><b>18.25</b></td><td><b>-1.15</b></td><td><b>20.14</b></td><td><b>1.82</b></td>
+          </tr>
+
+          <tr class="task-banner"><td colspan="11">Human Preference Alignment (PickScore)</td></tr>
+          <tr>
+            <td>AWM</td>
+            <td class="col-div">—</td><td>—</td><td><u>23.94</u></td>
+            <td class="col-div"><b>6.45</b></td><td><u>3.97</u></td>
+            <td class="col-div">26.59</td><td><u>29.99</u></td><td><u>1.29</u></td><td><u>23.95</u></td><td>3.34</td>
+          </tr>
+          <tr>
+            <td>DiffusionNFT</td>
+            <td class="col-div">—</td><td>—</td><td>23.89</td>
+            <td class="col-div"><u>6.40</u></td><td>3.81</td>
+            <td class="col-div">26.36</td><td>29.05</td><td>1.24</td><td>23.86</td><td>3.32</td>
+          </tr>
+          <tr>
+            <td>DGPO</td>
+            <td class="col-div">—</td><td>—</td><td>23.85</td>
+            <td class="col-div">6.18</td><td>3.60</td>
+            <td class="col-div"><b>27.32</b></td><td>29.21</td><td>1.23</td><td>23.54</td><td><u>3.35</u></td>
+          </tr>
+          <tr class="ours">
+            <td><b>iTDM (Ours)</b></td>
+            <td class="col-div">—</td><td>—</td><td><b>24.06</b></td>
+            <td class="col-div">6.22</td><td><b>4.26</b></td>
+            <td class="col-div"><u>26.71</u></td><td><b>31.85</b></td><td><b>1.33</b></td><td><b>24.00</b></td><td><b>3.36</b></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Tab 3: Offline RL -->
+    <div class="table-wrap tabpane" id="tab-offline" data-pane-group="tables">
+      <table>
+        <thead>
+          <tr class="group-row">
+            <th rowspan="2">Offline Model (Frozen CFG = 4.5 Rollouts)</th>
+            <th colspan="3" class="col-div">In-Domain Task Metric</th>
+            <th colspan="2" class="col-div">Unseen Image Quality</th>
+            <th colspan="5" class="col-div">Unseen Alignment &amp; Preference (DrawBench)</th>
+          </tr>
+          <tr class="sub-row">
+            <th class="col-div">GenEval</th>
+            <th>OCR</th>
+            <th>PickScore</th>
+            <th class="col-div">Aesthetic</th>
+            <th>DeQA</th>
+            <th class="col-div">CLIPScore</th>
+            <th>HPSv2.1</th>
+            <th>ImgRwd</th>
+            <th>PickScore</th>
+            <th>UniRwd</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="base-row">
+            <td>SD3.5-M (Pretrained Base)</td>
+            <td class="col-div">0.63</td><td>0.59</td><td>21.72</td>
+            <td class="col-div">5.36</td><td>—</td>
+            <td class="col-div">28.50</td><td>27.90</td><td>0.85</td><td>22.34</td><td>3.03</td>
+          </tr>
+
+          <tr class="task-banner"><td colspan="11">Compositional Image Generation (Pairwise G = 2 &amp; Group-Wise)</td></tr>
+          <tr>
+            <td>Diffusion-DPO (<i>G</i> = 2)</td>
+            <td class="col-div">0.69</td><td>—</td><td>—</td>
+            <td class="col-div"><b>5.41</b></td><td>4.03</td>
+            <td class="col-div">28.72</td><td><b>28.55</b></td><td>0.97</td><td>22.35</td><td><b>3.20</b></td>
+          </tr>
+          <tr class="ours">
+            <td><b>iTDM (Ours, <i>G</i> = 2)</b></td>
+            <td class="col-div"><b>0.77</b></td><td>—</td><td>—</td>
+            <td class="col-div">5.38</td><td><b>4.06</b></td>
+            <td class="col-div"><b>29.11</b></td><td>28.26</td><td><b>1.06</b></td><td><b>22.43</b></td><td>3.18</td>
+          </tr>
+          <tr class="sep">
+            <td>AWM</td>
+            <td class="col-div">0.75</td><td>—</td><td>—</td>
+            <td class="col-div"><b>5.36</b></td><td>3.72</td>
+            <td class="col-div"><u>29.10</u></td><td>27.66</td><td>0.93</td><td>21.49</td><td>3.14</td>
+          </tr>
+          <tr>
+            <td>DiffusionNFT</td>
+            <td class="col-div">0.52</td><td>—</td><td>—</td>
+            <td class="col-div"><u>5.33</u></td><td>3.76</td>
+            <td class="col-div">28.30</td><td>27.13</td><td>0.72</td><td>22.00</td><td>3.00</td>
+          </tr>
+          <tr>
+            <td>DGPO</td>
+            <td class="col-div"><u>0.78</u></td><td>—</td><td>—</td>
+            <td class="col-div"><u>5.33</u></td><td><b>3.99</b></td>
+            <td class="col-div"><b>29.11</b></td><td><b>28.01</b></td><td><u>1.01</u></td><td><u>22.28</u></td><td><u>3.21</u></td>
+          </tr>
+          <tr class="ours">
+            <td><b>iTDM (Ours)</b></td>
+            <td class="col-div"><b>0.87</b></td><td>—</td><td>—</td>
+            <td class="col-div">5.32</td><td><u>3.82</u></td>
+            <td class="col-div">28.93</td><td><u>27.98</u></td><td><b>1.03</b></td><td><b>22.38</b></td><td><b>3.23</b></td>
+          </tr>
+
+          <tr class="task-banner"><td colspan="11">Visual Text Rendering (Pairwise G = 2 &amp; Group-Wise)</td></tr>
+          <tr>
+            <td>Diffusion-DPO (<i>G</i> = 2)</td>
+            <td class="col-div">—</td><td>0.78</td><td>—</td>
+            <td class="col-div">5.23</td><td>3.90</td>
+            <td class="col-div"><b>29.44</b></td><td><b>27.99</b></td><td>0.91</td><td>22.13</td><td>3.08</td>
+          </tr>
+          <tr class="ours">
+            <td><b>iTDM (Ours, <i>G</i> = 2)</b></td>
+            <td class="col-div">—</td><td><b>0.87</b></td><td>—</td>
+            <td class="col-div"><b>5.29</b></td><td><b>3.95</b></td>
+            <td class="col-div">29.26</td><td>27.57</td><td><b>1.01</b></td><td><b>22.23</b></td><td><b>3.13</b></td>
+          </tr>
+          <tr class="sep">
+            <td>AWM</td>
+            <td class="col-div">—</td><td>0.85</td><td>—</td>
+            <td class="col-div"><b>5.34</b></td><td>3.48</td>
+            <td class="col-div">28.92</td><td><u>27.64</u></td><td>0.90</td><td>21.82</td><td><u>3.01</u></td>
+          </tr>
+          <tr>
+            <td>DiffusionNFT</td>
+            <td class="col-div">—</td><td>0.53</td><td>—</td>
+            <td class="col-div">5.21</td><td><u>3.52</u></td>
+            <td class="col-div">28.33</td><td>25.97</td><td>0.62</td><td>21.74</td><td>2.95</td>
+          </tr>
+          <tr>
+            <td>DGPO</td>
+            <td class="col-div">—</td><td><u>0.87</u></td><td>—</td>
+            <td class="col-div">5.18</td><td>3.33</td>
+            <td class="col-div"><b>29.41</b></td><td>26.37</td><td><b>0.99</b></td><td><u>21.90</u></td><td>2.97</td>
+          </tr>
+          <tr class="ours">
+            <td><b>iTDM (Ours)</b></td>
+            <td class="col-div">—</td><td><b>0.92</b></td><td>—</td>
+            <td class="col-div"><u>5.22</u></td><td><b>3.68</b></td>
+            <td class="col-div"><u>29.27</u></td><td><b>27.69</b></td><td><u>0.95</u></td><td><b>22.27</b></td><td><b>3.12</b></td>
+          </tr>
+
+          <tr class="task-banner"><td colspan="11">Human Preference Alignment (Pairwise G = 2 &amp; Group-Wise)</td></tr>
+          <tr>
+            <td>Diffusion-DPO (<i>G</i> = 2)</td>
+            <td class="col-div">—</td><td>—</td><td>21.87</td>
+            <td class="col-div">5.46</td><td>4.06</td>
+            <td class="col-div">28.44</td><td>28.77</td><td>0.98</td><td>22.51</td><td>3.16</td>
+          </tr>
+          <tr class="ours">
+            <td><b>iTDM (Ours, <i>G</i> = 2)</b></td>
+            <td class="col-div">—</td><td>—</td><td><b>22.11</b></td>
+            <td class="col-div"><b>5.56</b></td><td><b>4.12</b></td>
+            <td class="col-div"><b>28.67</b></td><td><b>30.25</b></td><td><b>1.17</b></td><td><b>22.77</b></td><td><b>3.25</b></td>
+          </tr>
+          <tr class="sep">
+            <td>AWM</td>
+            <td class="col-div">—</td><td>—</td><td>21.71</td>
+            <td class="col-div"><b>5.67</b></td><td>3.73</td>
+            <td class="col-div">27.02</td><td>27.55</td><td>0.83</td><td>22.20</td><td>3.09</td>
+          </tr>
+          <tr>
+            <td>DiffusionNFT</td>
+            <td class="col-div">—</td><td>—</td><td>20.17</td>
+            <td class="col-div">5.29</td><td>3.74</td>
+            <td class="col-div">28.23</td><td>26.69</td><td>0.65</td><td>21.96</td><td>3.02</td>
+          </tr>
+          <tr>
+            <td>DGPO</td>
+            <td class="col-div">—</td><td>—</td><td><u>22.13</u></td>
+            <td class="col-div">5.59</td><td><b>4.18</b></td>
+            <td class="col-div"><u>28.36</u></td><td><u>30.39</u></td><td><u>1.16</u></td><td><u>22.78</u></td><td><u>3.27</u></td>
+          </tr>
+          <tr class="ours">
+            <td><b>iTDM (Ours)</b></td>
+            <td class="col-div">—</td><td>—</td><td><b>22.26</b></td>
+            <td class="col-div"><u>5.62</u></td><td><u>4.15</u></td>
+            <td class="col-div"><b>28.71</b></td><td><b>30.75</b></td><td><b>1.24</b></td><td><b>22.94</b></td><td><b>3.34</b></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="table-note">All methods share identical regularization strength toward the frozen pretrained SD3.5-Medium reference and are evaluated with 40-step ODE sampling.</p>
+
+    <!-- Training Curves & Radar Explorer -->
+    <div class="curves-block">
+      <h3>Training Efficiency &amp; Diagnostic Controls</h3>
+      <div class="tabs" role="tablist" data-tab-group="curves">
+        <button class="tab active" role="tab" aria-selected="true" data-target="curve-online-cfg45">Online (CFG = 4.5)</button>
+        <button class="tab" role="tab" aria-selected="false" data-target="curve-online-cfg1">Online (CFG = 1.0)</button>
+        <button class="tab" role="tab" aria-selected="false" data-target="curve-offline-group">Offline Group-Wise + Radar</button>
+        <button class="tab" role="tab" aria-selected="false" data-target="curve-offline-dpo">Offline Pairwise (G = 2) vs. DPO</button>
+      </div>
+
+      <div class="curve-pane active" id="curve-online-cfg45" data-pane-group="curves">
+        <figure class="curve-card">
+          <img class="zoomable" src="static/images/comparison_online_traincfg45_gpu_hours.png" alt="Online RL efficiency with CFG-guided policy (CFG = 4.5)">
+          <figcaption>
+            <b>Online RL efficiency with CFG-guided policy (CFG = 4.5).</b> Removing heuristic proximity anchors causes <b>on-policy RWR</b> (equivalent to unanchored NFT / AWM) to collapse rapidly to zero under baseline-induced drift \(-\Delta_t^b\). Even with anchors, baselines plateau lower or oscillate, whereas <b>iTDM</b> converges substantially faster in wall-clock GPU hours to higher asymptotic rewards without collapse.
+          </figcaption>
+        </figure>
+      </div>
+
+      <div class="curve-pane" id="curve-online-cfg1" data-pane-group="curves">
+        <figure class="curve-card">
+          <img class="zoomable" src="static/images/comparison_online_cfg1_gpu_hours.png" alt="Online RL efficiency with conditional policy (CFG = 1.0)">
+          <figcaption>
+            <b>Online RL efficiency without guidance (CFG = 1.0).</b> Even without CFG mismatch, imperfect online self-consistency causes standard-batch AWM, NFT, and on-policy RWR to crash early; doubling the batch size stabilizes AWM/NFT at higher compute cost, yet <b>iTDM</b> still converges faster and more smoothly across all three tasks.
+          </figcaption>
+        </figure>
+      </div>
+
+      <div class="curve-pane" id="curve-offline-group" data-pane-group="curves">
+        <figure class="curve-card">
+          <img class="zoomable" src="static/images/offline_group_line_radar.png" alt="Group-wise offline RL curves and DrawBench OOD radar chart">
+          <figcaption>
+            <b>Group-wise offline RL with frozen SD3.5-M rollouts (CFG = 4.5).</b> <i>Left:</i> Task reward vs. GPU hours—static velocity proxies leave persistent mismatch in offline NFT and AWM, causing collapse or divergence, while <b>iTDM</b> improves monotonically. <i>Right:</i> Seven unseen DrawBench metrics averaged across the three tasks (parentheses show <b>iTDM</b>), confirming superior out-of-domain generalization.
+          </figcaption>
+        </figure>
+      </div>
+
+      <div class="curve-pane" id="curve-offline-dpo" data-pane-group="curves">
+        <figure class="curve-card">
+          <img class="zoomable" src="static/images/offline_dpo_line_radar.png" alt="Pairwise offline RL (G = 2) vs Diffusion-DPO curves and DrawBench OOD radar">
+          <figcaption>
+            <b>Pairwise offline RL (<i>G</i> = 2, CFG = 4.5) vs. Diffusion-DPO.</b> Under identical pairwise rollouts, <b>iTDM</b> converges faster and outperforms Diffusion-DPO across all three in-domain tasks (0.77 vs. 0.69 GenEval; 0.87 vs. 0.78 OCR; 22.11 vs. 21.87 PickScore) and across the 3-task average DrawBench radar, while scaling seamlessly to larger groups.
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" id="bibtex">
+  <div class="code-grid">
+    <div>
+      <h2>Quick Start</h2>
+      <div class="bib">
+        <button class="copy" data-copy-target="quickstart-text">Copy</button>
+<pre id="quickstart-text">git clone https://github.com/Luo-Yihong/iTDM.git
+cd iTDM &amp;&amp; pip install -e .
+
+# Single-node (8 GPUs) online RL on SD3.5-M
+bash scripts/single_node/sd3_itdm_geneval.sh
+bash scripts/single_node/sd3_itdm_ocr.sh
+bash scripts/single_node/sd3_itdm_pickscore.sh
+# Append --config.sample.guidance_scale=4.5 for CFG RL</pre>
+      </div>
+    </div>
+
+    <div>
+      <h2>BibTeX</h2>
+      <div class="bib">
+        <button class="copy" data-copy-target="bib-text">Copy</button>
+<pre id="bib-text">@article{luo2026itdm,
+  title   = {Reinforcing Diffusion Models by Instantaneous
+             Trajectory Distribution Matching},
+  author  = {Luo, Yihong},
+  year    = {2026},
+  url     = {https://github.com/Luo-Yihong/iTDM}
+}</pre>
+      </div>
+    </div>
+  </div>
+
+  <div class="ack">
+    <strong>Acknowledgement &amp; Contact.</strong>
+    Our codebase builds upon <a href="https://github.com/Luo-Yihong/TDM-R1" target="_blank" rel="noopener">TDM-R1</a>, <a href="https://github.com/Luo-Yihong/DGPO" target="_blank" rel="noopener">DGPO</a>, and <a href="https://github.com/yifan123/flow_grpo" target="_blank" rel="noopener">Flow-GRPO</a>, and extends <a href="https://arxiv.org/abs/2503.06674" target="_blank" rel="noopener">Trajectory Distribution Matching (TDM)</a> to reinforcement post-training. For questions or discussions, please contact Yihong Luo at <a href="mailto:yluocg@connect.ust.hk">yluocg@connect.ust.hk</a>.
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">© 2026 iTDM Author · Hong Kong University of Science and Technology</div>
+</footer>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Enlarged figure">
+  <button class="lightbox-close" id="lightbox-close" aria-label="Close">×</button>
+  <img id="lightbox-img" alt="">
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" defer
+  onload="renderMathInElement(document.body,{delimiters:[{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]})"></script>
+<script src="static/main.js?v=20261124"></script>
+</body>
+</html>
