@@ -65,14 +65,14 @@ h4 { margin: 0 0 8px; font-size: 16px; font-weight: 700; }
 }
 .venue {
   display: inline-block;
-  text-transform: uppercase;
-  letter-spacing: 0.13em;
-  font-size: 12px;
+  text-transform: none;
+  letter-spacing: 0.03em;
+  font-size: 13.5px;
   font-weight: 700;
   color: var(--ours);
   background: var(--ours-soft);
   border: 1px solid #cbe6dc;
-  padding: 5px 14px;
+  padding: 5px 15px;
   border-radius: 999px;
   margin: 0 0 18px;
 }
