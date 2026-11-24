@@ -4,9 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>iTDM: Reinforcing Diffusion Models by Instantaneous Trajectory Distribution Matching</title>
-  <meta name="description" content="iTDM: Reinforcing Diffusion Models by Instantaneous Trajectory Distribution Matching. Exact baseline invariance for forward diffusion RL, ~3x faster convergence to 0.87 on GenEval2 without collapse, unifying online and offline RL.">
+  <meta name="description" content="iTDM: Reinforcing Diffusion Models by Instantaneous Trajectory Distribution Matching. Exact baseline invariance for forward diffusion RL, ~3x faster convergence to 0.87 on GenEval2 without collapse, scaling to 5.6B FLUX.3 Klein Base, and unifying online and offline RL.">
   <meta property="og:title" content="iTDM: Reinforcing Diffusion Models by Instantaneous Trajectory Distribution Matching">
-  <meta property="og:description" content="Principled forward diffusion RL via Instantaneous Trajectory Distribution Matching. Nearly 3x faster on GenEval2 (0.87), SOTA CFG-guided & conditional online RL, and stable offline RL.">
+  <meta property="og:description" content="Principled forward diffusion RL via Instantaneous Trajectory Distribution Matching. Nearly 3x faster on GenEval2 (0.87), scaling to 5.6B FLUX.3 Klein Base, SOTA CFG-guided & conditional online RL, and stable offline RL.">
   <meta property="og:url" content="https://luo-yihong.github.io/iTDM/">
   <meta property="og:image" content="https://luo-yihong.github.io/iTDM/static/images/geneval2_teaser_wide.png">
   <link rel="canonical" href="https://luo-yihong.github.io/iTDM/">
@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
-  <link rel="stylesheet" href="static/style.css?v=20261124b">
+  <link rel="stylesheet" href="static/style.css?v=20261124c">
 </head>
 <body>
 
@@ -37,6 +37,9 @@
       </a>
       <a class="btn" href="https://github.com/Luo-Yihong/iTDM" target="_blank" rel="noopener">
         <svg class="filled" viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.4-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.6.3-1.1.6-1.3-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.8 1a9.6 9.6 0 0 1 5 0c1.9-1.3 2.8-1 2.8-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.3 4.7-4.6 5 .4.3.7.9.7 1.9V21c0 .3.2.6.7.5A10 10 0 0 0 12 2z"/></svg>Code
+      </a>
+      <a class="btn" href="#flux3">
+        <svg viewBox="0 0 24 24"><path d="M12 3l2.4 5.6L20 11l-5.6 2.4L12 19l-2.4-5.6L4 11l5.6-2.4z"/></svg>5.6B FLUX.3
       </a>
       <a class="btn" href="#method">
         <svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h10M4 17h16"/></svg>Method
@@ -71,6 +74,10 @@
     <div class="lbl">GenEval2 convergence over DGPO / NFT / AWM, scaling smoothly without collapse</div>
   </div>
   <div class="stat">
+    <div class="num">5.6B FLUX.3</div>
+    <div class="lbl">Guidance-free RL (CFG = 1.0) reaches <b>10.92</b> HPSv3++, beating CFG = 3.5 base on DrawBench</div>
+  </div>
+  <div class="stat">
     <div class="num">0.63 → 0.97</div>
     <div class="lbl">GenEval under CFG-guided online RL on SD3.5-M (<b>0.98</b> under unguided policy)</div>
   </div>
@@ -93,13 +100,93 @@
     To resolve this issue, we propose <b>Instantaneous Trajectory Distribution Matching (iTDM)</b>, taking the infinitesimal limit of Trajectory Distribution Matching toward a time-local reward-guided target via the posterior-score identity to yield a sample-level gradient anchored at the behavior velocity—without learning an additional reward-tilted target score. Tracking this velocity with a lightweight online auxiliary denoiser guarantees <b>exact baseline invariance at the auxiliary optimum</b>, effectively suppressing baseline drift across both online and offline RL.
   </p>
   <p>
-    Extensive experiments on SD3.5-Medium across compositional image generation, visual text rendering, and human preference alignment show that iTDM achieves state-of-the-art in-domain and out-of-domain performance. Notably, on the challenging GenEval2 benchmark, iTDM converges nearly 3× faster than competing methods while scaling smoothly to 0.87 without collapse.
+    Extensive experiments across compositional generation, text rendering, and preference alignment show that iTDM achieves state-of-the-art in-domain and out-of-domain performance across group-wise online/offline RL and pairwise offline RL. Notably, on the challenging GenEval2 benchmark, iTDM converges nearly 3× faster than competing methods while scaling smoothly to 0.87 without collapse. Furthermore, iTDM scales effectively to the <b>5.6B FLUX.3</b> model, achieving better performance across both in-domain and unseen metrics.
   </p>
 </section>
 
-<section class="band" id="qualitative">
+<section class="band flux3-band" id="flux3">
   <div class="wrap">
-    <h2>Qualitative Comparisons</h2>
+    <span class="section-kicker">Scaling to 5.6B Open-Source SOTA</span>
+    <h2>Scaling Online RL to 5.6B FLUX.3 Klein Base</h2>
+    <p class="lead">
+      To evaluate scalability across model architectures, parameter scales, and reward functions, we apply <b>iTDM</b> to the 5.6B-parameter <a href="https://bfl.ai/models/flux-3-image-klein" target="_blank" rel="noopener">FLUX.3 Klein Base</a> model using the wide-spectrum preference reward <a href="https://arxiv.org/abs/2606.14657" target="_blank" rel="noopener">HPSv3++</a> in the <b>guidance-free regime (\(\mathrm{CFG}=1.0\))</b>. Operating at \(1\times\) NFE without classifier-free guidance, <b>iTDM</b> surpasses both the unguided (\(\mathrm{CFG}=1.0\)) and CFG-guided (\(\mathrm{CFG}=3.5\)) base models on in-domain HPSv3++ and across unseen DrawBench quality and preference metrics.
+    </p>
+
+    <div class="qual-stack">
+      <figure class="qual-card flux3-showcase">
+        <div class="qual-header">
+          <h3>Samples Generated by iTDM on 5.6B FLUX.3 Klein Base (CFG = 1.0)</h3>
+          <span class="zoom-hint">Click image to enlarge</span>
+        </div>
+        <img class="zoomable" src="static/images/itdm_flux3.jpg" alt="Samples generated by iTDM on the 5.6B FLUX.3 Klein Base reinforced with HPSv3++ at CFG = 1.0">
+        <figcaption>
+          <b>Samples generated by iTDM on the 5.6B FLUX.3 Klein Base,</b> reinforced with HPSv3++ in the guidance-free regime (\(\mathrm{CFG}=1.0\)), delivering photorealistic lighting, crisp anatomical and material details, and diverse artistic styles without CFG overhead.
+        </figcaption>
+      </figure>
+
+      <figure class="qual-card">
+        <div class="qual-header">
+          <h3>Qualitative Comparison: FLUX.3 Klein Base (CFG = 1.0 &amp; 3.5) vs. iTDM (CFG = 1.0)</h3>
+          <span class="zoom-hint">Click image to enlarge</span>
+        </div>
+        <img class="zoomable" src="static/images/itdm_flux3_compare.jpg" alt="Qualitative comparison between 5.6B FLUX.3 Klein Base (CFG = 1.0 and CFG = 3.5) and iTDM (CFG = 1.0)" loading="lazy">
+        <figcaption>
+          <b>Qualitative comparison between the 5.6B FLUX.3 Klein Base and iTDM.</b> Reinforced under \(\mathrm{CFG}=1.0\) with HPSv3++, <b>iTDM</b> delivers sharper visual fidelity, richer textures, and more faithful adherence to complex compositional prompts than the base model at both \(\mathrm{CFG}=1.0\) and \(\mathrm{CFG}=3.5\).
+        </figcaption>
+      </figure>
+    </div>
+
+    <div class="flux3-table-block">
+      <h3>DrawBench Evaluation on 5.6B FLUX.3 Klein Base</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr class="group-row">
+              <th rowspan="2">Model (5.6B FLUX.3 Klein Base)</th>
+              <th class="col-div">Task Metric</th>
+              <th colspan="2" class="col-div">Unseen Image Quality</th>
+              <th colspan="5" class="col-div">Unseen Alignment &amp; Preference (DrawBench)</th>
+            </tr>
+            <tr class="sub-row">
+              <th class="col-div">HPSv3++</th>
+              <th class="col-div">Aesthetic</th>
+              <th>DeQA</th>
+              <th class="col-div">CLIPScore</th>
+              <th>HPSv2.1</th>
+              <th>ImgRwd</th>
+              <th>PickScore</th>
+              <th>UniRwd</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="base-row">
+              <td>FLUX.3 Klein Base (CFG = 1.0)</td>
+              <td class="col-div">1.661</td>
+              <td class="col-div">5.064</td><td>3.858</td>
+              <td class="col-div">23.13</td><td>20.84</td><td>-0.646</td><td>20.46</td><td>2.125</td>
+            </tr>
+            <tr class="base-row">
+              <td>FLUX.3 Klein Base (CFG = 3.5)</td>
+              <td class="col-div">8.518</td>
+              <td class="col-div">5.308</td><td>4.273</td>
+              <td class="col-div"><b>28.28</b></td><td>27.14</td><td>0.730</td><td><b>22.33</b></td><td>3.263</td>
+            </tr>
+            <tr class="ours sep">
+              <td><b>iTDM (Ours, CFG = 1.0)</b></td>
+              <td class="col-div"><b>10.922</b></td>
+              <td class="col-div"><b>5.442</b></td><td><b>4.464</b></td>
+              <td class="col-div">26.18</td><td><b>27.70</b></td><td><b>0.828</b></td><td>22.17</td><td><b>3.379</b></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="table-note">Online reinforcement post-training with HPSv3++ under guidance-free sampling (\(\mathrm{CFG}=1.0\)), evaluated on DrawBench against the pretrained 5.6B FLUX.3 Klein Base at \(\mathrm{CFG}=1.0\) and default guided \(\mathrm{CFG}=3.5\).</p>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" id="qualitative">
+  <h2>Qualitative Comparisons on SD3.5-Medium</h2>
     <p class="lead">
       Signed RWR pulls the trainable policy toward coarse few-step rollout marginals while drifting under CFG velocity mismatch. By anchoring residuals at the behavior velocity \(v_\phi \approx v_q\) and regularizing solely toward the pretrained reference \(v_{\mathrm{ref}}\), <b>iTDM</b> preserves crisp textures, rich scene context, and accurate typography across both unguided and CFG-guided regimes.
     </p>
@@ -127,10 +214,10 @@
         </figcaption>
       </figure>
     </div>
-  </div>
 </section>
 
-<section class="wrap" id="method">
+<section class="band" id="method">
+  <div class="wrap">
   <h2>Why Forward Diffusion RL Drifts — and How iTDM Fixes It</h2>
 
   <h3>1. Hidden Fragility of Existing Forward Diffusion RL (Signed RWR)</h3>
@@ -270,19 +357,20 @@
       </div>
     </div>
   </div>
+  </div>
 </section>
 
-<section class="band" id="results">
-  <div class="wrap">
+<section class="wrap" id="results">
     <h2>Quantitative Results &amp; Training Efficiency</h2>
     <p class="lead">
-      We post-train SD3.5-Medium across Compositional Generation (GenEval), Visual Text Rendering (OCR), and Human Preference Alignment (PickScore). To detect reward hacking, every checkpoint is additionally evaluated on <b>seven unseen out-of-domain metrics</b> on DrawBench. Best results in each setting are highlighted in <b>bold</b>.
+      We post-train SD3.5-Medium across Compositional Generation (GenEval), Visual Text Rendering (OCR), and Human Preference Alignment (PickScore), and further scale to the <b>5.6B FLUX.3 Klein Base</b> model with HPSv3++. To detect reward hacking, every checkpoint is additionally evaluated on <b>seven unseen out-of-domain metrics</b> on DrawBench. Best results in each setting are highlighted in <b>bold</b>.
     </p>
 
     <div class="tabs" role="tablist" data-tab-group="tables">
       <button class="tab active" role="tab" aria-selected="true" data-target="tab-online-cfg45">Online RL · CFG-Guided (CFG = 4.5)</button>
       <button class="tab" role="tab" aria-selected="false" data-target="tab-online-cfg1">Online RL · Conditional (CFG = 1.0)</button>
       <button class="tab" role="tab" aria-selected="false" data-target="tab-offline">Offline RL · Group-Wise &amp; Pairwise (G = 2)</button>
+      <button class="tab" role="tab" aria-selected="false" data-target="tab-flux3">5.6B FLUX.3 · Guidance-Free (CFG = 1.0)</button>
     </div>
 
     <!-- Tab 1: Online CFG = 4.5 -->
@@ -656,7 +744,51 @@
         </tbody>
       </table>
     </div>
-    <p class="table-note">All methods share identical regularization strength toward the frozen pretrained SD3.5-Medium reference and are evaluated with 40-step ODE sampling.</p>
+
+    <!-- Tab 4: 5.6B FLUX.3 Klein Base -->
+    <div class="table-wrap tabpane" id="tab-flux3" data-pane-group="tables">
+      <table>
+        <thead>
+          <tr class="group-row">
+            <th rowspan="2">Model (5.6B FLUX.3 Klein Base)</th>
+            <th class="col-div">In-Domain Task Metric</th>
+            <th colspan="2" class="col-div">Unseen Image Quality</th>
+            <th colspan="5" class="col-div">Unseen Alignment &amp; Preference (DrawBench)</th>
+          </tr>
+          <tr class="sub-row">
+            <th class="col-div">HPSv3++</th>
+            <th class="col-div">Aesthetic</th>
+            <th>DeQA</th>
+            <th class="col-div">CLIPScore</th>
+            <th>HPSv2.1</th>
+            <th>ImgRwd</th>
+            <th>PickScore</th>
+            <th>UniRwd</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="base-row">
+            <td>FLUX.3 Klein Base (CFG = 1.0)</td>
+            <td class="col-div">1.661</td>
+            <td class="col-div">5.064</td><td>3.858</td>
+            <td class="col-div">23.13</td><td>20.84</td><td>-0.646</td><td>20.46</td><td>2.125</td>
+          </tr>
+          <tr class="base-row">
+            <td>FLUX.3 Klein Base (CFG = 3.5)</td>
+            <td class="col-div">8.518</td>
+            <td class="col-div">5.308</td><td>4.273</td>
+            <td class="col-div"><b>28.28</b></td><td>27.14</td><td>0.730</td><td><b>22.33</b></td><td>3.263</td>
+          </tr>
+          <tr class="ours sep">
+            <td><b>iTDM (Ours, CFG = 1.0)</b></td>
+            <td class="col-div"><b>10.922</b></td>
+            <td class="col-div"><b>5.442</b></td><td><b>4.464</b></td>
+            <td class="col-div">26.18</td><td><b>27.70</b></td><td><b>0.828</b></td><td>22.17</td><td><b>3.379</b></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="table-note">SD3.5-Medium methods share identical regularization strength toward the frozen pretrained reference and use 40-step ODE sampling; 5.6B FLUX.3 Klein Base is reinforced with HPSv3++ under guidance-free sampling (CFG = 1.0).</p>
 
     <!-- Training Curves & Radar Explorer -->
     <div class="curves-block">
@@ -704,10 +836,10 @@
         </figure>
       </div>
     </div>
-  </div>
 </section>
 
-<section class="wrap" id="bibtex">
+<section class="band" id="bibtex">
+  <div class="wrap">
   <div class="code-grid">
     <div>
       <h2>Quick Start</h2>
@@ -743,6 +875,7 @@ bash scripts/single_node/sd3_itdm_pickscore.sh
   <div class="ack">
     <strong>Acknowledgement &amp; Contact.</strong>
     Our codebase builds upon <a href="https://github.com/Luo-Yihong/TDM-R1" target="_blank" rel="noopener">TDM-R1</a>, <a href="https://github.com/Luo-Yihong/DGPO" target="_blank" rel="noopener">DGPO</a>, and <a href="https://github.com/yifan123/flow_grpo" target="_blank" rel="noopener">Flow-GRPO</a>, and extends <a href="https://arxiv.org/abs/2503.06674" target="_blank" rel="noopener">Trajectory Distribution Matching (TDM)</a> to reinforcement post-training. For questions or discussions, please contact Yihong Luo at <a href="mailto:yluocg@connect.ust.hk">yluocg@connect.ust.hk</a>.
+  </div>
   </div>
 </section>
 

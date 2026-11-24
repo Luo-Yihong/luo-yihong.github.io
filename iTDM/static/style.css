@@ -171,28 +171,29 @@ figcaption b, figcaption strong { color: var(--ink); }
 /* Key Stats */
 .stats {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 14px;
   padding-top: 6px !important;
   padding-bottom: 16px !important;
 }
 .stat {
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  padding: 18px 18px 16px;
+  padding: 16px 15px 15px;
   background: linear-gradient(180deg, #ffffff 0%, #fbfcfe 100%);
   transition: border-color .15s ease, transform .15s ease;
 }
 .stat:hover { border-color: #bdd9cf; transform: translateY(-1px); }
 .stat .num {
-  font-size: 25px;
+  font-size: 21.5px;
   font-weight: 800;
   letter-spacing: -0.025em;
   color: var(--ours);
+  white-space: nowrap;
 }
 .stat .lbl {
   color: var(--muted);
-  font-size: 13.8px;
+  font-size: 13.4px;
   line-height: 1.45;
   margin-top: 5px;
 }
@@ -333,6 +334,39 @@ figcaption b, figcaption strong { color: var(--ink); }
 }
 
 /* Qualitative Comparisons */
+.flux3-band {
+  background: linear-gradient(180deg, #f3f9f6 0%, var(--bg-band) 100%);
+  border-top: 1px solid #d9ebe4;
+  border-bottom: 1px solid #e6ebf2;
+}
+.section-kicker {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ours);
+  background: var(--ours-soft);
+  border: 1px solid #c9e6dc;
+  padding: 3px 11px;
+  border-radius: 999px;
+  margin-bottom: 10px;
+}
+.flux3-showcase img {
+  max-width: 900px;
+  margin: 0 auto;
+}
+.flux3-table-block {
+  margin-top: 28px;
+}
+.flux3-table-block h3 {
+  margin: 0 0 12px;
+  font-size: 18.5px;
+}
+.band .eq-box { background: #fff; }
+.band .eq-box.warn { background: #fffafa; }
+.band .ack { background: #fff; }
+
 .qual-stack {
   display: flex;
   flex-direction: column;
@@ -570,14 +604,18 @@ footer {
 }
 .lightbox-close:hover { background: rgba(255, 255, 255, 0.25); }
 
-@media (max-width: 960px) {
+@media (max-width: 1080px) {
   .stats { grid-template-columns: repeat(2, 1fr); }
+  .stats .stat:last-child { grid-column: 1 / -1; }
+}
+@media (max-width: 960px) {
   .cards, .drift-grid, .method-split, .code-grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 640px) {
   body { font-size: 15.5px; }
   .hero { padding-top: 48px; }
   .stats { grid-template-columns: 1fr; }
+  .stats .stat:last-child { grid-column: auto; }
   .logos img { height: 32px; }
   section, section.wrap { padding: 44px 18px; }
 }
