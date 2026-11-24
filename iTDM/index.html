@@ -32,7 +32,7 @@
       <img src="static/images/UST_L4.png" alt="The Hong Kong University of Science and Technology">
     </div>
     <nav class="buttons" aria-label="Primary links">
-      <a class="btn btn-accent" href="static/iTDM.pdf?v=20261124">
+      <a class="btn btn-accent" href="static/iTDM.pdf?v=20261124c">
         <svg viewBox="0 0 24 24"><path d="M6 2h9l5 5v15H6z M14 2v6h6"/></svg>Paper (PDF)
       </a>
       <a class="btn" href="https://github.com/Luo-Yihong/iTDM" target="_blank" rel="noopener">
@@ -276,7 +276,7 @@
   <div class="wrap">
     <h2>Quantitative Results &amp; Training Efficiency</h2>
     <p class="lead">
-      We post-train SD3.5-Medium across Compositional Generation (GenEval), Visual Text Rendering (OCR), and Human Preference Alignment (PickScore). To detect reward hacking, every checkpoint is additionally evaluated on <b>seven unseen out-of-domain metrics</b> on DrawBench. Best results are in <b>bold</b>, second best <u>underlined</u>.
+      We post-train SD3.5-Medium across Compositional Generation (GenEval), Visual Text Rendering (OCR), and Human Preference Alignment (PickScore). To detect reward hacking, every checkpoint is additionally evaluated on <b>seven unseen out-of-domain metrics</b> on DrawBench. Best results in each setting are highlighted in <b>bold</b>.
     </p>
 
     <div class="tabs" role="tablist" data-tab-group="tables">
@@ -319,9 +319,9 @@
           <tr class="task-banner"><td colspan="11">Compositional Image Generation (GenEval)</td></tr>
           <tr>
             <td>AWM</td>
-            <td class="col-div"><u>0.93</u></td><td>—</td><td>—</td>
-            <td class="col-div"><u>5.12</u></td><td><u>3.43</u></td>
-            <td class="col-div">28.96</td><td><u>24.54</u></td><td><u>0.91</u></td><td><u>22.14</u></td><td><u>3.07</u></td>
+            <td class="col-div">0.93</td><td>—</td><td>—</td>
+            <td class="col-div">5.12</td><td>3.43</td>
+            <td class="col-div">28.96</td><td>24.54</td><td>0.91</td><td>22.14</td><td>3.07</td>
           </tr>
           <tr>
             <td>DiffusionNFT</td>
@@ -333,7 +333,7 @@
             <td>DGPO</td>
             <td class="col-div">0.90</td><td>—</td><td>—</td>
             <td class="col-div">5.09</td><td>3.17</td>
-            <td class="col-div"><u>28.98</u></td><td>23.87</td><td>0.75</td><td>22.05</td><td>2.98</td>
+            <td class="col-div">28.98</td><td>23.87</td><td>0.75</td><td>22.05</td><td>2.98</td>
           </tr>
           <tr class="ours">
             <td><b>iTDM (Ours)</b></td>
@@ -347,33 +347,33 @@
             <td>AWM</td>
             <td class="col-div">—</td><td>0.75</td><td>—</td>
             <td class="col-div"><b>5.28</b></td><td>3.62</td>
-            <td class="col-div">28.67</td><td>24.77</td><td><u>0.73</u></td><td>22.05</td><td><u>2.93</u></td>
+            <td class="col-div">28.67</td><td>24.77</td><td>0.73</td><td>22.05</td><td>2.93</td>
           </tr>
           <tr>
             <td>DiffusionNFT</td>
             <td class="col-div">—</td><td>0.70</td><td>—</td>
-            <td class="col-div">5.19</td><td><u>3.67</u></td>
-            <td class="col-div"><u>28.75</u></td><td><u>25.43</u></td><td>0.68</td><td><u>22.10</u></td><td>2.91</td>
+            <td class="col-div">5.19</td><td>3.67</td>
+            <td class="col-div">28.75</td><td>25.43</td><td>0.68</td><td>22.10</td><td>2.91</td>
           </tr>
           <tr>
             <td>DGPO</td>
-            <td class="col-div">—</td><td><u>0.76</u></td><td>—</td>
+            <td class="col-div">—</td><td>0.76</td><td>—</td>
             <td class="col-div">4.95</td><td>2.56</td>
             <td class="col-div">26.82</td><td>19.73</td><td>-0.45</td><td>20.76</td><td>2.18</td>
           </tr>
           <tr class="ours">
             <td><b>iTDM (Ours)</b></td>
             <td class="col-div">—</td><td><b>0.96</b></td><td>—</td>
-            <td class="col-div"><u>5.23</u></td><td><b>3.97</b></td>
+            <td class="col-div">5.23</td><td><b>3.97</b></td>
             <td class="col-div"><b>28.77</b></td><td><b>27.98</b></td><td><b>0.80</b></td><td><b>22.40</b></td><td><b>3.09</b></td>
           </tr>
 
           <tr class="task-banner"><td colspan="11">Human Preference Alignment (PickScore)</td></tr>
           <tr>
             <td>AWM</td>
-            <td class="col-div">—</td><td>—</td><td><u>22.80</u></td>
-            <td class="col-div"><u>6.02</u></td><td><u>3.99</u></td>
-            <td class="col-div">27.73</td><td><u>29.78</u></td><td><u>1.18</u></td><td><u>23.23</u></td><td><u>3.27</u></td>
+            <td class="col-div">—</td><td>—</td><td>22.80</td>
+            <td class="col-div">6.02</td><td>3.99</td>
+            <td class="col-div">27.73</td><td>29.78</td><td>1.18</td><td>23.23</td><td>3.27</td>
           </tr>
           <tr>
             <td>DiffusionNFT</td>
@@ -385,7 +385,7 @@
             <td>DGPO</td>
             <td class="col-div">—</td><td>—</td><td>22.37</td>
             <td class="col-div">5.65</td><td>3.98</td>
-            <td class="col-div"><u>28.12</u></td><td>28.87</td><td>1.10</td><td>22.89</td><td>3.17</td>
+            <td class="col-div">28.12</td><td>28.87</td><td>1.10</td><td>22.89</td><td>3.17</td>
           </tr>
           <tr class="ours">
             <td><b>iTDM (Ours)</b></td>
@@ -443,15 +443,15 @@
           </tr>
           <tr>
             <td>DGPO</td>
-            <td class="col-div"><u>0.97</u></td><td>—</td><td>—</td>
-            <td class="col-div"><b>5.15</b></td><td><u>4.06</u></td>
-            <td class="col-div"><u>27.64</u></td><td><u>24.03</u></td><td><b>0.71</b></td><td><b>22.04</b></td><td><u>2.96</u></td>
+            <td class="col-div">0.97</td><td>—</td><td>—</td>
+            <td class="col-div"><b>5.15</b></td><td>4.06</td>
+            <td class="col-div">27.64</td><td>24.03</td><td><b>0.71</b></td><td><b>22.04</b></td><td>2.96</td>
           </tr>
           <tr class="ours">
             <td><b>iTDM (Ours)</b></td>
             <td class="col-div"><b>0.98</b></td><td>—</td><td>—</td>
-            <td class="col-div"><u>5.08</u></td><td><b>4.23</b></td>
-            <td class="col-div"><b>27.69</b></td><td><b>24.73</b></td><td><u>0.65</u></td><td><u>21.74</u></td><td><b>3.04</b></td>
+            <td class="col-div">5.08</td><td><b>4.23</b></td>
+            <td class="col-div"><b>27.69</b></td><td><b>24.73</b></td><td>0.65</td><td>21.74</td><td><b>3.04</b></td>
           </tr>
 
           <tr class="task-banner"><td colspan="11">Visual Text Rendering (OCR)</td></tr>
@@ -464,14 +464,14 @@
           <tr>
             <td>DiffusionNFT</td>
             <td class="col-div">—</td><td><b>0.97</b></td><td>—</td>
-            <td class="col-div">3.52</td><td><u>3.52</u></td>
-            <td class="col-div"><u>22.13</u></td><td><u>14.86</u></td><td><u>-1.49</u></td><td><u>19.86</u></td><td>1.50</td>
+            <td class="col-div">3.52</td><td>3.52</td>
+            <td class="col-div">22.13</td><td>14.86</td><td>-1.49</td><td>19.86</td><td>1.50</td>
           </tr>
           <tr>
             <td>DGPO</td>
             <td class="col-div">—</td><td><b>0.97</b></td><td>—</td>
-            <td class="col-div"><u>4.19</u></td><td>2.13</td>
-            <td class="col-div">21.36</td><td>14.16</td><td>-1.70</td><td>19.69</td><td><u>1.53</u></td>
+            <td class="col-div">4.19</td><td>2.13</td>
+            <td class="col-div">21.36</td><td>14.16</td><td>-1.70</td><td>19.69</td><td>1.53</td>
           </tr>
           <tr class="ours">
             <td><b>iTDM (Ours)</b></td>
@@ -483,27 +483,27 @@
           <tr class="task-banner"><td colspan="11">Human Preference Alignment (PickScore)</td></tr>
           <tr>
             <td>AWM</td>
-            <td class="col-div">—</td><td>—</td><td><u>23.94</u></td>
-            <td class="col-div"><b>6.45</b></td><td><u>3.97</u></td>
-            <td class="col-div">26.59</td><td><u>29.99</u></td><td><u>1.29</u></td><td><u>23.95</u></td><td>3.34</td>
+            <td class="col-div">—</td><td>—</td><td>23.94</td>
+            <td class="col-div"><b>6.45</b></td><td>3.97</td>
+            <td class="col-div">26.59</td><td>29.99</td><td>1.29</td><td>23.95</td><td>3.34</td>
           </tr>
           <tr>
             <td>DiffusionNFT</td>
             <td class="col-div">—</td><td>—</td><td>23.89</td>
-            <td class="col-div"><u>6.40</u></td><td>3.81</td>
+            <td class="col-div">6.40</td><td>3.81</td>
             <td class="col-div">26.36</td><td>29.05</td><td>1.24</td><td>23.86</td><td>3.32</td>
           </tr>
           <tr>
             <td>DGPO</td>
             <td class="col-div">—</td><td>—</td><td>23.85</td>
             <td class="col-div">6.18</td><td>3.60</td>
-            <td class="col-div"><b>27.32</b></td><td>29.21</td><td>1.23</td><td>23.54</td><td><u>3.35</u></td>
+            <td class="col-div"><b>27.32</b></td><td>29.21</td><td>1.23</td><td>23.54</td><td>3.35</td>
           </tr>
           <tr class="ours">
             <td><b>iTDM (Ours)</b></td>
             <td class="col-div">—</td><td>—</td><td><b>24.06</b></td>
             <td class="col-div">6.22</td><td><b>4.26</b></td>
-            <td class="col-div"><u>26.71</u></td><td><b>31.85</b></td><td><b>1.33</b></td><td><b>24.00</b></td><td><b>3.36</b></td>
+            <td class="col-div">26.71</td><td><b>31.85</b></td><td><b>1.33</b></td><td><b>24.00</b></td><td><b>3.36</b></td>
           </tr>
         </tbody>
       </table>
@@ -557,25 +557,25 @@
             <td>AWM</td>
             <td class="col-div">0.75</td><td>—</td><td>—</td>
             <td class="col-div"><b>5.36</b></td><td>3.72</td>
-            <td class="col-div"><u>29.10</u></td><td>27.66</td><td>0.93</td><td>21.49</td><td>3.14</td>
+            <td class="col-div">29.10</td><td>27.66</td><td>0.93</td><td>21.49</td><td>3.14</td>
           </tr>
           <tr>
             <td>DiffusionNFT</td>
             <td class="col-div">0.52</td><td>—</td><td>—</td>
-            <td class="col-div"><u>5.33</u></td><td>3.76</td>
+            <td class="col-div">5.33</td><td>3.76</td>
             <td class="col-div">28.30</td><td>27.13</td><td>0.72</td><td>22.00</td><td>3.00</td>
           </tr>
           <tr>
             <td>DGPO</td>
-            <td class="col-div"><u>0.78</u></td><td>—</td><td>—</td>
-            <td class="col-div"><u>5.33</u></td><td><b>3.99</b></td>
-            <td class="col-div"><b>29.11</b></td><td><b>28.01</b></td><td><u>1.01</u></td><td><u>22.28</u></td><td><u>3.21</u></td>
+            <td class="col-div">0.78</td><td>—</td><td>—</td>
+            <td class="col-div">5.33</td><td><b>3.99</b></td>
+            <td class="col-div"><b>29.11</b></td><td><b>28.01</b></td><td>1.01</td><td>22.28</td><td>3.21</td>
           </tr>
           <tr class="ours">
             <td><b>iTDM (Ours)</b></td>
             <td class="col-div"><b>0.87</b></td><td>—</td><td>—</td>
-            <td class="col-div">5.32</td><td><u>3.82</u></td>
-            <td class="col-div">28.93</td><td><u>27.98</u></td><td><b>1.03</b></td><td><b>22.38</b></td><td><b>3.23</b></td>
+            <td class="col-div">5.32</td><td>3.82</td>
+            <td class="col-div">28.93</td><td>27.98</td><td><b>1.03</b></td><td><b>22.38</b></td><td><b>3.23</b></td>
           </tr>
 
           <tr class="task-banner"><td colspan="11">Visual Text Rendering (Pairwise G = 2 &amp; Group-Wise)</td></tr>
@@ -595,25 +595,25 @@
             <td>AWM</td>
             <td class="col-div">—</td><td>0.85</td><td>—</td>
             <td class="col-div"><b>5.34</b></td><td>3.48</td>
-            <td class="col-div">28.92</td><td><u>27.64</u></td><td>0.90</td><td>21.82</td><td><u>3.01</u></td>
+            <td class="col-div">28.92</td><td>27.64</td><td>0.90</td><td>21.82</td><td>3.01</td>
           </tr>
           <tr>
             <td>DiffusionNFT</td>
             <td class="col-div">—</td><td>0.53</td><td>—</td>
-            <td class="col-div">5.21</td><td><u>3.52</u></td>
+            <td class="col-div">5.21</td><td>3.52</td>
             <td class="col-div">28.33</td><td>25.97</td><td>0.62</td><td>21.74</td><td>2.95</td>
           </tr>
           <tr>
             <td>DGPO</td>
-            <td class="col-div">—</td><td><u>0.87</u></td><td>—</td>
+            <td class="col-div">—</td><td>0.87</td><td>—</td>
             <td class="col-div">5.18</td><td>3.33</td>
-            <td class="col-div"><b>29.41</b></td><td>26.37</td><td><b>0.99</b></td><td><u>21.90</u></td><td>2.97</td>
+            <td class="col-div"><b>29.41</b></td><td>26.37</td><td><b>0.99</b></td><td>21.90</td><td>2.97</td>
           </tr>
           <tr class="ours">
             <td><b>iTDM (Ours)</b></td>
             <td class="col-div">—</td><td><b>0.92</b></td><td>—</td>
-            <td class="col-div"><u>5.22</u></td><td><b>3.68</b></td>
-            <td class="col-div"><u>29.27</u></td><td><b>27.69</b></td><td><u>0.95</u></td><td><b>22.27</b></td><td><b>3.12</b></td>
+            <td class="col-div">5.22</td><td><b>3.68</b></td>
+            <td class="col-div">29.27</td><td><b>27.69</b></td><td>0.95</td><td><b>22.27</b></td><td><b>3.12</b></td>
           </tr>
 
           <tr class="task-banner"><td colspan="11">Human Preference Alignment (Pairwise G = 2 &amp; Group-Wise)</td></tr>
@@ -643,14 +643,14 @@
           </tr>
           <tr>
             <td>DGPO</td>
-            <td class="col-div">—</td><td>—</td><td><u>22.13</u></td>
+            <td class="col-div">—</td><td>—</td><td>22.13</td>
             <td class="col-div">5.59</td><td><b>4.18</b></td>
-            <td class="col-div"><u>28.36</u></td><td><u>30.39</u></td><td><u>1.16</u></td><td><u>22.78</u></td><td><u>3.27</u></td>
+            <td class="col-div">28.36</td><td>30.39</td><td>1.16</td><td>22.78</td><td>3.27</td>
           </tr>
           <tr class="ours">
             <td><b>iTDM (Ours)</b></td>
             <td class="col-div">—</td><td>—</td><td><b>22.26</b></td>
-            <td class="col-div"><u>5.62</u></td><td><u>4.15</u></td>
+            <td class="col-div">5.62</td><td>4.15</td>
             <td class="col-div"><b>28.71</b></td><td><b>30.75</b></td><td><b>1.24</b></td><td><b>22.94</b></td><td><b>3.34</b></td>
           </tr>
         </tbody>
